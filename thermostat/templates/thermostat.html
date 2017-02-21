@@ -1,0 +1,47 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='temperature.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='temperature.css') }}"/>
+</head>
+<body>
+	<div class="temperature-control">
+		<h2>Temperature Control</h2>
+		<div class="controls">
+			<div class="control-run-temperature">
+				<div class="r">
+					<div class="c12">
+						<div class="btn run-schedule-button">Run Schedule</div>
+					</div>
+				</div>
+			</div>
+			<div class="control-set-temporary">
+				<div class="r">
+					<div class="c8">
+						<div class="temperature-display">
+							<div class="display-current">
+								<div class="label">Current Temperature</div>
+								<div class="temperature">70</div>
+							</div>
+							<div class="display-target">
+								<div class="label">Target Temperature</div>
+								<div class="temporary-label">Temporary</div>
+								<div class="temperature">70</div>
+							</div>
+						</div>
+					</div>
+					<div class="c4">
+						<div class="actions">
+							<div class="btn temp-change temp-up">Up</div>
+							<div class="btn temp-change temp-down">Down</div>
+							<div class="btn set-temperature">Go</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
