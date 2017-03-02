@@ -1,0 +1,43 @@
+.schedule-container {
+	width: 1024px;
+}
+
+.day {
+	font-family: sans-serif;
+    font-size: 31px;
+    background: gray;
+    border-top-left-radius: 3px;
+    padding: 3px 8px;
+    border-top-right-radius: 3px;
+}
+
+.start-time-container, .temperature {
+border-bottom: 1px solid gray;
+    width: 100%;
+    font-size: 37px;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 18px;
+}
+
+.schedule-container .schedule-confirm {
+	background: green;
+    text-align: center;
+    font-size: 3.1em;
+    width: 51px;
+    margin: auto;
+	padding: 14px;
+}
+
+.schedule-container .schedule-delete {
+	background: red;
+    text-align: center;
+    font-size: 3.1em;
+    width: 51px;
+    margin: auto;
+	padding: 14px;
+}
+
+.schedule-container .temp-change, .schedule-container .time-change {
+	color: gray;
+}

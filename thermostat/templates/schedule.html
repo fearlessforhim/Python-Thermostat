@@ -1,0 +1,63 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='schedule.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='schedule.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='structure.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='font-awesome.css') }}"/>
+</head>
+<body>
+	<div class="schedule-container">
+		<div class='r'>
+			<div class='c10'>
+				<div class='day'>
+					Monday
+				</div>
+			</div>
+		</div>
+		<div class='r'>
+			<div class='row-id' id='1'>
+				<div class='c4'>
+					<div class='r'>
+						<div class='c10'>
+							<div class='start-time-container'>
+								<span class='start-hour'>00</span>
+								:
+								<span class='start-minute'>00</span>
+							</div>
+						</div>
+						<div class='c2'>
+							<div class="btn time-change time-up"><i class="fa fa-angle-up"></i></div>
+							<div class="btn time-change time-down"><i class="fa fa-angle-down"></i></div>
+						</div>
+					</div>
+				</div>
+				<div class='c4'>
+					<div class='r'>
+						<div class='c10'>
+							<div class='temperature'>70</div>
+						</div>
+						<div class='c2'>
+							<div class="btn temp-change temp-up"><i class="fa fa-angle-up"></i></div>
+							<div class="btn temp-change temp-down"><i class="fa fa-angle-down"></i></div>
+						</div>
+					</div>
+				</div>
+				<div class='c1'>
+					<div class='btn schedule-confirm'><i class='fa fa-check'></i></div>
+				</div>
+				<div class='c1'>
+					<div class='btn schedule-delete'><i class='fa fa-close'></i></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="schedule-day-template hidden">
+		
+	</div>
+	<div class="schedule-row-template hidden">
+		
+	</div>
+</body>
+</html>
