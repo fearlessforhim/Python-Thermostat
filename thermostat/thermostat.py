@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import status_reader as r
 import json_file_reader as file_reader
+import status_writer as w
 import time
 from log import Log
 import copy
@@ -10,7 +10,7 @@ import Adafruit_DHT
 
 
 class Thermostat:
-    def run(self, f):
+    def run(self, f, r):
         l = Log()
         flex_temperature = .5
 
@@ -24,9 +24,12 @@ class Thermostat:
                 print "Temporary target temperature is set"
                 target_temperature = data["temporary_temperature"]
 
-            current_temperature = r.read_value('temperature')
-            #humidity, temperature = Adafruit_DHT.read_retry(11, 4)
-            #print temperature
+            current_temperature = None
+            while current_temperature is None:
+                current_temperature = r.read_value()
+
+            w.write_value("temperature", current_temperature)
+                
             should_run_heat = data["heat"]
             should_run_fan = data["fan"]
             print "Current temperature is : ", current_temperature

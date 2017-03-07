@@ -2,16 +2,14 @@
 	width: 1024px;
 }
 
-.day {
-	font-family: sans-serif;
+.schedule-control .day {
+    font-family: sans-serif;
     font-size: 31px;
     background: gray;
-    border-top-left-radius: 3px;
     padding: 3px 8px;
-    border-top-right-radius: 3px;
 }
 
-.start-time-container, .temperature {
+.schedule-control .start-time-container, .schedule-control .temperature {
 border-bottom: 1px solid gray;
     width: 100%;
     font-size: 37px;
@@ -20,7 +18,7 @@ border-bottom: 1px solid gray;
     padding: 18px;
 }
 
-.schedule-container .schedule-confirm {
+.schedule-control .schedule-container .schedule-confirm {
 	background: green;
     text-align: center;
     font-size: 3.1em;
@@ -29,7 +27,7 @@ border-bottom: 1px solid gray;
 	padding: 14px;
 }
 
-.schedule-container .schedule-delete {
+.schedule-control .schedule-container .schedule-delete {
 	background: red;
     text-align: center;
     font-size: 3.1em;
@@ -38,6 +36,6 @@ border-bottom: 1px solid gray;
 	padding: 14px;
 }
 
-.schedule-container .temp-change, .schedule-container .time-change {
+.schedule-control .schedule-container .temp-change, .schedule-control .schedule-container .time-change {
 	color: gray;
 }

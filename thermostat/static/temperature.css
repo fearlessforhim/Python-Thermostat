@@ -55,6 +55,38 @@ body {
     font-size: 2.5em;
 }
 
+.temperature-control .temperature-display-wrapper .temporary-notice {
+    display: none;
+    float: right;
+    background: gray;
+    border-radius: 3px;
+    padding: 4px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0 3px 0 0;
+}
+
+.temperature-control .temperature-display-wrapper.temporary .temporary-notice {
+    display: block;
+}
+
+
+.temperature-control .temperature-display-wrapper .running-notice {
+    display: none;
+    float: right;
+    background: gray;
+    border-radius: 3px;
+    padding: 4px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+}
+
+
+.temperature-control .temperature-display-wrapper.running .running-notice {
+    display: block;
+}
+
 .control-center {
     display: flex;
     margin: 20px 0 0;
@@ -76,23 +108,27 @@ body {
 }
 
 .control-center .control span{
-    margin: 0 0 0 2px;
+    margin: 0 0 0 5px;
 }
 .control-center .off {
-    display: initial;
 }
 
-.control-center .on {
-    display: none;
-}
 
 .control-center .control.on .off {
     display: none;
 }
 
-
 .control-center .control.on .on {
-    display: inital;
+    display: initial;
+}
+
+
+.control-center .control.off .on {
+    display: none;
+}
+
+.control-center .control.off .off {
+    display: initial;
 }
 
 .temperature-control .temperature-action-display .btn{

@@ -20,9 +20,9 @@ class Furnace:
             GPIO.setup(11, GPIO.OUT)
             if self.is_heat_on:
                 #ensure we are sending a gpio out to relay
-                current_temperature = float(r.read_value('temperature'))
-                new_temperature = (current_temperature + .1)
-                w.write_value('temperature', round(new_temperature, 1))
+                #current_temperature = float(r.read_value('temperature'))
+                #new_temperature = (current_temperature + .1)
+                #w.write_value('temperature', round(new_temperature, 1))
                 if not GPIO.input(11):
                     GPIO.output(11, True)
             else:
