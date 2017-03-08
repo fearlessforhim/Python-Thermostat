@@ -107,6 +107,9 @@ $(function() {
 		}
 		
 		setTimeout(currentStatusPoll, 500);
+	    },
+	    error: function(){
+		window.location = '/thermostat'
 	    }
 	});
     };

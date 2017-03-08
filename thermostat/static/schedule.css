@@ -1,5 +1,5 @@
 .schedule-container {
-	width: 1024px;
+    //	width: 1024px;
 }
 
 .schedule-control .day {
@@ -9,8 +9,12 @@
     padding: 3px 8px;
 }
 
+.schedule-control .row-id {
+    background: #dddddd;
+    border-bottom: 1px solid #808080;
+}
+
 .schedule-control .start-time-container, .schedule-control .temperature {
-border-bottom: 1px solid gray;
     width: 100%;
     font-size: 37px;
     font-family: sans-serif;
@@ -18,24 +22,30 @@ border-bottom: 1px solid gray;
     padding: 18px;
 }
 
-.schedule-control .schedule-container .schedule-confirm {
-	background: green;
-    text-align: center;
-    font-size: 3.1em;
-    width: 51px;
-    margin: auto;
-	padding: 14px;
+.schedule-control .row-id .actions {
+    display: flex;
 }
 
-.schedule-control .schedule-container .schedule-delete {
-	background: red;
-    text-align: center;
-    font-size: 3.1em;
-    width: 51px;
-    margin: auto;
-	padding: 14px;
+.schedule-control .row-id .actions .btn {
+    margin: 4px 10px;
 }
 
-.schedule-control .schedule-container .temp-change, .schedule-control .schedule-container .time-change {
+.schedule-control .row-id .actions .schedule-confirm {
+    flex: 1;
+    background: green;
+    text-align: center;
+    font-size: 3.1em;
+    padding: 14px;
+}
+
+.schedule-control .row-id .actions .schedule-delete {
+    flex: 1;
+    background: red;
+    text-align: center;
+    font-size: 3.1em;
+    padding: 14px;
+}
+
+.schedule-control .row-id .temp-change, .schedule-control .row-id .time-change {
 	color: gray;
 }

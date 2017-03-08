@@ -26,13 +26,13 @@ $(function() {
 		}
 	}
 
-	$('body').on('click', '.temp-up', function(){
+	$('body').on('click', '.sched-temp-up', function(){
 		var me = $(this);
 		var temp = parseInt(me.parents('.row-id').find('.temperature').html());
 		updateTemperature(me, temp + 1);
 	});
 
-	$('body').on('click', '.temp-down', function(){
+	$('body').on('click', '.sched-temp-down', function(){
 		var me = $(this);
 		var temp = parseInt(me.parents('.row-id').find('.temperature').html());
 		updateTemperature(me, temp - 1);
