@@ -50,68 +50,37 @@
 	  <div class="btn run-schedule">Run Schedule</div>
 	</div>
       </div>
-      <!--
-      <div class="control-set-temporary">
-	<div class="c8">
-	  <div class="temperature-display">
-	    <div class="display-current">
-	      <span class="label">Current</span>
-	      <div class="temperature"><span class="value">70</span><span class="degree">&deg;</span></div>
-	    </div>
-	    <div class="display-target">
-	      <span class="label">Target</span>
-	      <span class="temporary-label">Temporary</span>
-	      <div class="temperature"><span class="value">70</span><span class="degree">&deg;</span></div>
-	    </div>
-	  </div>
-	</div>
-	<div class="c2">
-	  <div class="actions">
-	    <div class="btn temp-change temp-up"><i class="fa fa-angle-up"></i></div>
-	    <div class="btn temp-change temp-down"><i class="fa fa-angle-down"></i></div>
-	  </div>
-	</div>
-	<div class="c2">
-	  <div class="actions">
-	    <div class="btn temp-change run-schedule-button">Run Schedule</div>
-	  </div>
-	</div>
-      </div>
-      <div class="r">
-	<div class="secondary-controls">
-	  <div class="c3">
-	    <div class="btn heat-toggle heat-on"><span>Heat is</span><span class="heat-state-on">ON</span><span class="heat-state-off">OFF</span></div>
-	  </div>
-	  <div class="c3">
-	    <div class="btn fan-toggle fan-on"><span>Fan is</span><span class="fan-state-on">ON</span><span class="fan-state-off">OFF</span></div>
-	  </div>
-	  <div class="c4">
-	    <div class="btn modify-schedule-btn"><span>Change Schedule</span></div>
-	  </div>
-	</div>
-      </div>-->
+    </div>
+  </div>
+  <div class="schedule-control hidden">
+    <div save-row class="save-row">
+      <span class="save-btn"><i class="fa fa-check"></i></span>
+      <span class="reset-btn"><i class="fa fa-close"></i></span>
     </div>
   </div>
 </div>
-<div class="schedule-control">
+
+<div id="schedule-day-template" class="hidden">
   <div class='day-row'>
     <div class='r'>
       <div class='c12'>
 	<div class='day'>
-	  Monday
 	</div>
       </div>
     </div>
   </div>
+</div>
+
+<div id="schedule-row-template" class="hidden">
   <div class='row-id' id='1'>
     <div class='r'>
       <div class='c4'>
 	<div class='r'>
 	  <div class='c10'>
 	    <div class='start-time-container'>
-	      <span class='start-hour'>00</span>
+	      <span class='start-hour'></span>
 	      :
-	      <span class='start-minute'>00</span>
+	      <span class='start-minute'></span>
 	    </div>
 	  </div>
 	  <div class='c2'>
@@ -123,7 +92,7 @@
       <div class='c4'>
 	<div class='r'>
 	  <div class='c10'>
-	    <div class='temperature'>00</div>
+	    <div class='temperature'></div>
 	  </div>
 	  <div class='c2'>
 	    <div class="btn temp-change sched-temp-up"><i class="fa fa-angle-up"></i></div>
@@ -138,58 +107,7 @@
 	</div>
       </div>
     </div>
-  </div>
-  
-  <div class="schedule-day-template hidden">
-    <div class='day-row'>
-      <div class='r'>
-	<div class='c12'>
-	  <div class='day'>
-	  </div>
-	</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="schedule-row-template hidden">
-    <div class='row-id' id='1'>
-      <div class='r'>
-	<div class='c4'>
-	  <div class='r'>
-	    <div class='c10'>
-	      <div class='start-time-container'>
-		<span class='start-hour'></span>
-		:
-		<span class='start-minute'></span>
-	      </div>
-	    </div>
-	    <div class='c2'>
-	      <div class="btn time-change time-up"><i class="fa fa-angle-up"></i></div>
-	      <div class="btn time-change time-down"><i class="fa fa-angle-down"></i></div>
-	    </div>
-	  </div>
-	</div>
-	<div class='c4'>
-	  <div class='r'>
-	    <div class='c10'>
-	      <div class='temperature'></div>
-	    </div>
-	    <div class='c2'>
-	      <div class="btn temp-change sched-temp-up"><i class="fa fa-angle-up"></i></div>
-	      <div class="btn temp-change sched-temp-down"><i class="fa fa-angle-down"></i></div>
-	    </div>
-	  </div>
-	</div>
-	<div class='c4'>
-	  <div class='actions'>
-	    <div class='btn schedule-confirm'><i class='fa fa-check'></i></div>
-	    <div class='btn schedule-delete'><i class='fa fa-close'></i></div>
-	  </div>
-	</div>
-      </div>
-    </div>
-    
-  </div>
+  </div>  
 </div>
 </body>
 </html>

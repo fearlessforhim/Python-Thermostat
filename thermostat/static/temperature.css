@@ -4,7 +4,9 @@ body {
 }
 
 .page-controls {
-    width: 100%
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 .page-controls .header-btn {
@@ -30,6 +32,10 @@ body {
     width: 100%;
     background: #DDD;
     padding: 5px;
+}
+
+.temperature-control, .schedule-control{
+    margin-top: 48px;
 }
 
 .temperature-control .temperature-display-wrapper {
