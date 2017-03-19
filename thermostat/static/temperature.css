@@ -3,6 +3,10 @@ body {
     margin: 0;
 }
 
+.page-control-placeholder {
+    height: 245px;
+}
+
 .page-controls {
     width: 100%;
     position: fixed;
@@ -18,9 +22,8 @@ body {
 .page-controls .header-btn > div {
     margin: 0 auto;
     color: #AAAAAA;
-    width: 40%;
     text-align: center;
-    font-size: 2em;
+    font-size: 6em;
 }
 
 .page-controls .thermostat-page-btn {
@@ -35,30 +38,30 @@ body {
 }
 
 .temperature-control, .schedule-control{
-    margin-top: 48px;
+    margin-top: 0px;
 }
 
 .temperature-control .temperature-display-wrapper {
-     border-right: 1px solid #999;
+    border-right: 1px solid #999;
 }
 
 .temperature-control .temperature-display-wrapper .target{
-    width: 35%;
+    width: 67%;
     margin: auto;
 }
 
 .temperature-control .temperature-display-wrapper .target span{
-    font-size: 8em;
+    font-size: 260px;
 }
 
 
 .temperature-control .temperature-display-wrapper .current{
-    width: 12%;
+    width: 20%;
     margin: auto;
 }
 
 .temperature-control .temperature-display-wrapper .current span{
-    font-size: 2.5em;
+    font-size: 100px;
 }
 
 .temperature-control .temperature-display-wrapper .temporary-notice {
@@ -70,6 +73,7 @@ body {
     font-style: italic;
     font-weight: bold;
     margin: 0 3px 0 0;
+    font-size: 35px;
 }
 
 .temperature-control .temperature-display-wrapper.temporary .temporary-notice {
@@ -86,6 +90,7 @@ body {
     font-style: italic;
     font-weight: bold;
     margin: 0 5px 0 0;
+    font-size: 35px;
 }
 
 
@@ -94,16 +99,14 @@ body {
 }
 
 .control-center {
-    display: flex;
-    margin: 20px 0 0;
+    font-size: 30px;
+    padding: 0 8px 8px;
 }
 
 .control-center > div {
-    flex: 1;
 }
 
 .control-center .control {
-    width: 90%;
     text-align: center;
     margin: auto;
     font-size: 1.5em;
@@ -111,6 +114,10 @@ body {
     padding: 4px;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.control-center .heat-control {
+    margin-bottom: 8px;
 }
 
 .control-center .control span{
@@ -139,7 +146,7 @@ body {
 
 .temperature-control .temperature-action-display .btn{
     text-align: center;
-    font-size: 3.5em;
+    font-size: 215px;
     margin: 5px 8px;
 }
 
@@ -154,7 +161,8 @@ body {
 
 .temperature-control .temperature-action-display .run-schedule{
     background: #777;
-    font-size: 2em;
+    font-size: 41px;
+    padding: 48px 0;
 }
 /*
 .temperature-display {

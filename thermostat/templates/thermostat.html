@@ -11,17 +11,20 @@
 <body>
   <div class="page-controls">
     <div class="r">
-      <div class="c6">
+      <div class="c12">
 	<div class="header-btn thermostat-page-btn">
 	  <div>Thermostat</div>
 	</div>
       </div>
-      <div class="c6">
+      <div class="c12">
 	<div class="header-btn schedule-page-btn">
 	  <div>Schedule</div>
 	</div>
       </div>
     </div>
+  </div>
+  <div class="page-control-placeholder">
+    
   </div>
   <div class="temperature-control">
     <div class="r">
@@ -37,8 +40,16 @@
 	      <span class="temperature">70</span><span class="degree">&deg;</span>
 	    </div>
 	    <div class="control-center">
-	      <div class="heat-control"><div class="control">Heat<span class="on">ON</span><span class="off">OFF</span></div></div>
-	      <div class="fan-control"><div class="control">Fan<span class="on">ON</span><span class="off">OFF</span></div></div>
+	      <div class="r">
+		<div class="c12">
+		  <div class="heat-control"><div class="control">Heat<span class="on">ON</span><span class="off">OFF</span></div></div>
+		</div>
+	      </div>
+	      <div class="r">
+		<div class="c12">
+		  <div class="fan-control"><div class="control">Fan<span class="on">ON</span><span class="off">OFF</span></div></div>
+		</div>
+	      </div>
 	    </div>
 	  </div>
 	</div>
@@ -56,6 +67,8 @@
     <div save-row class="save-row">
       <span class="save-btn"><i class="fa fa-check"></i></span>
       <span class="reset-btn"><i class="fa fa-close"></i></span>
+    </div>
+    <div list-container class="list-container">
     </div>
   </div>
 </div>
@@ -102,8 +115,13 @@
       </div>
       <div class='c4'>
 	<div class='actions'>
-	  <div class='btn schedule-confirm'><i class='fa fa-check'></i></div>
-	  <div class='btn schedule-delete'><i class='fa fa-close'></i></div>
+	  <div class='copy-actions'>
+	    <div class='btn schedule-copy-day'><span>Copy to next day</span></div>
+	    <div class='btn schedule-copy-week'><span>Copy to all</span></div>
+	  </div>
+	  <div class='delete-actions'>
+	    <div class='btn schedule-delete'><span>Delete</span></div>
+	  </div>
 	</div>
       </div>
     </div>

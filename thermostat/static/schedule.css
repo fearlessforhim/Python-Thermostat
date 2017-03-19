@@ -13,6 +13,10 @@
     padding: 20px;
 }
 
+.schedule-control .list-container {
+    padding-top: 56px;
+}
+
 .schedule-control .day {
     font-family: sans-serif;
     font-size: 31px;
@@ -38,23 +42,24 @@
 }
 
 .schedule-control .row-id .actions .btn {
-    margin: 4px 10px;
-}
-
-.schedule-control .row-id .actions .schedule-confirm {
-    flex: 1;
-    background: green;
+    margin: 4px 0px;
+    color: white;
+    font-size: 1.2em;
     text-align: center;
-    font-size: 3.1em;
-    padding: 14px;
+    padding: 5px 0;
 }
 
-.schedule-control .row-id .actions .schedule-delete {
+.schedule-control .row-id .actions .copy-actions {
     flex: 1;
+}
+
+
+.schedule-control .row-id .actions .copy-actions .btn {
+    background: #00A9B1;
+}
+
+.schedule-control .row-id .actions .delete-actions .btn {
     background: red;
-    text-align: center;
-    font-size: 3.1em;
-    padding: 14px;
 }
 
 .schedule-control .row-id .temp-change, .schedule-control .row-id .time-change {

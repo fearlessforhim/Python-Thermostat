@@ -79,5 +79,17 @@ def toggle_fan():
 def get_schedule_data():
     return jsonify(reader.read_json('settings.json'))
 
+@app.route('/setSchedule', methods=['POST'])
+def set_schedule():
+    if not request.json:
+        print "Request is the following: ", request.json
+        return jsonify({'response': 'error'})
+    
+    settings = reader.read_json('settings.json')
+    settings['schedules'] = request.json
+    writer.write_json(settings, 'settings.json')
+        
+    return jsonify({'response': 'success'})    
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
