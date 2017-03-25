@@ -12,12 +12,24 @@
 	width: 83.33%
 }
 
+.r .c9 {
+    width: 75%;
+}
+
 .r .c8 {
 	width: 66.66%;
 }
 
+.r .c7 {
+    width: 58.33%;
+}
+
 .r .c6{
 	width: 50%;
+}
+
+.r .c5 {
+    width: 41.66%
 }
 
 .r .c4 {
@@ -40,7 +52,7 @@
 	width:100%;
 }
 
-.c12, .c10, .c8, .c6, .c4, .c3, .c2, .c1 {
+.c12, .c10, .c9, .c8, .c7, .c6, .c5, .c4, .c3, .c2, .c1 {
 	float: left;
 	min-height: 1px;
 }

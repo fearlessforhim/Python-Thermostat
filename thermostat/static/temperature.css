@@ -7,6 +7,10 @@ body {
     height: 245px;
 }
 
+.page-control-placeholder.schedule {
+    height: 245px;
+}
+
 .page-controls {
     width: 100%;
     position: fixed;
@@ -23,7 +27,7 @@ body {
     margin: 0 auto;
     color: #AAAAAA;
     text-align: center;
-    font-size: 6em;
+    font-size: 97px;
 }
 
 .page-controls .thermostat-page-btn {
