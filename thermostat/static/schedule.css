@@ -1,15 +1,22 @@
-.schedule-container {
+.schedule-control {
     //	width: 1024px;
+    font-size: 16px;
 }
 
-.save-row {
+.schedule-control .save-row {
     position: fixed;
     width: 100%;
     background: #DDD;
     border-bottom: 2px solid #808080;
 }
 
-.save-row .save-btn{
+.schedule-control .save-row .message {
+    font-size: 4em;
+    margin: 0.8em 0 0 .6em;
+    float: left;
+}
+
+.schedule-control .save-row .save-btn{
     float: right;
     padding: 11px 20px;
     font-size: 80px;
@@ -18,6 +25,26 @@
     color: white;
     border: 2px solid #00634f;
     margin: 20px 40px;
+}
+
+.schedule-control .day-selector-list {
+    width: 100%;
+}
+
+.schedule-control .day-selector-list .day-select{
+    width: 14.28%;
+    float: left;
+    font-size: 3em;
+    padding: 47px 0;
+    background: gray;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.schedule-control .day-selector-list .day-select.selected{
+    background: #525252;
 }
 
 .schedule-control .list-container {
@@ -37,11 +64,23 @@
     padding: 12px;
 }
 
+.schedule-control .row-id .time-row, .schedule-control .row-id .temperature-row {
+    border: 2px solid gray;
+    border-radius: 4px;
+    background: #efefef;
+    padding-right: 25px;
+    padding-top: 20px;
+}
+
+.schedule-control .row-id .time-row {
+    margin: 0px 10px 7px 0;
+}
+
 .schedule-control .start-time-container, .schedule-control .temperature {
-    font-size: 7em;
+    font-size: 8em;
     font-family: sans-serif;
     text-align: center;
-    padding: 18px;
+    padding: 20px 0px 35px;
 }
 
 .schedule-control .row-id .actions {
@@ -58,6 +97,7 @@
 
 .schedule-control .row-id .label {
     font-size: 3em;
+    margin: 23px 0 0 7px;
 }
 
 .schedule-control .row-id .actions {
@@ -66,6 +106,7 @@
 
 .schedule-control .row-id .actions .btn {
     font-size: 4em;
+    margin: 4px;
 }
 
 
@@ -73,11 +114,18 @@
     background: #00A9B1;
 }
 
+.schedule-control .row-id .actions .btn.schedule-copy-week {
+    padding: 37px 0;
+}
+
 .schedule-control .row-id .actions .btn.schedule-delete {
     background: #01787d;
+    padding: 42px 0px;
 }
 
 .schedule-control .row-id .temp-change, .schedule-control .row-id .time-change {
     color: gray;
-    font-size: 7em;
+    font-size: 8em;
+    margin-top: -27px;
+    margin-left: -21px;
 }

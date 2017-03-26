@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='structure.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='font-awesome.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='schedule.css') }}"/>
+	<meta name="viewport" content="user-scalable=0"> 
 </head>
 <body>
   <div class="page-controls">
@@ -63,20 +64,51 @@
       </div>
     </div>
   </div>
-  <div save-row class="save-row">
-    <div class="save-btn">Save</div>
-  </div>
-  <div class="schedule-control hidden">
-    <div list-container class="list-container">
+  <div id='my-div' style='height: 200px;'>
     </div>
-  </div>
-</div>
-
-<div id="schedule-day-template" class="hidden">
-  <div class='day-row'>
-    <div class='r'>
-      <div class='c12'>
-	<div class='day'>
+  <div class="schedule-control hidden">
+    <div save-row class="save-row">
+      <span class='message'></span>
+      <div class="save-btn">Save</div>
+    </div>
+    <div list-container class="list-container" id='list-container'>
+      <div class='day-selector-list'>
+	<div class='day-select selected' data-day='monday'>
+	  Mon
+	</div>	
+	<div class='day-select' data-day='tuesday'>
+	  Tue
+	</div>
+	<div class='day-select' data-day='wednesday'>
+	  Wed
+	</div>
+	<div class='day-select' data-day='thursday'>
+	  Thu
+	</div>
+	<div class='day-select' data-day='friday'>
+	  Fri
+	</div>
+	<div class='day-select' data-day='saturday'>
+	  Sat
+	</div>
+	<div class='day-select' data-day='sunday'>
+	  Sun
+	</div>
+      </div>
+      <div class='list'>
+	<div data-selector='monday' class='day-list'>
+	</div>
+	<div data-selector='tuesday' class='day-list hidden'>
+	</div>
+	<div data-selector='wednesday' class='day-list hidden'>
+	</div>
+	<div data-selector='thursday' class='day-list hidden'>
+	</div>
+	<div data-selector='friday' class='day-list hidden'>
+	</div>
+	<div data-selector='saturday' class='day-list hidden'>
+	</div>
+	<div data-selector='sunday' class='day-list hidden'>
 	</div>
       </div>
     </div>
@@ -87,34 +119,37 @@
   <div class='row-id' id='1'>
     <div class='r'>
       <div class='c7'>
-	<span class='label'>Time</span>
-	<div class='r'>
-	  <div class='c10'>
-	    <div class='start-time-container'>
-	      <span class='start-hour'></span>
-	      :
-	      <span class='start-minute'></span>
+	<div class='label'>Time</div>
+	<div class='time-row'>
+	  <div class='r'>
+	    <div class='c10'>
+	      <div class='start-time-container'>
+		<span class='start-hour'></span>
+		:
+		<span class='start-minute'></span>
+	      </div>
 	    </div>
-	  </div>
-	  <div class='c2'>
-	    <div class="btn time-change time-up"><i class="fa fa-angle-up"></i></div>
-	    <div class="btn time-change time-down"><i class="fa fa-angle-down"></i></div>
+	    <div class='c2'>
+	      <div class="btn time-change time-up"><i class="fa fa-angle-up"></i></div>
+	      <div class="btn time-change time-down"><i class="fa fa-angle-down"></i></div>
+	    </div>
 	  </div>
 	</div>
       </div>
       <div class='c5'>
-	<span class='label'>Temperature</span>
-	<div class='r'>
-	  <div class='c9'>
-	    <div class='temperature'></div>
-	  </div>
-	  <div class='c3'>
-	    <div class="btn temp-change sched-temp-up"><i class="fa fa-angle-up"></i></div>
-	    <div class="btn temp-change sched-temp-down"><i class="fa fa-angle-down"></i></div>
+	<div class='label'>Temperature</div>
+	<div class='temperature-row'>
+	  <div class='r'>
+	    <div class='c9'>
+	      <div class='temperature'></div>
+	    </div>
+	    <div class='c3'>
+	      <div class="btn temp-change sched-temp-up"><i class="fa fa-angle-up"></i></div>
+	      <div class="btn temp-change sched-temp-down"><i class="fa fa-angle-down"></i></div>
+	    </div>
 	  </div>
 	</div>
       </div>
-      
     </div>
     <div class='actions'>
       <div class='r'>

@@ -22,28 +22,40 @@ $(function() {
 		    'temperature': temperature
 		}
 	    ),
-	    contentType: 'application/json;charset=UTF-8'
+	    contentType: 'application/json;charset=UTF-8',
+	    success: function(data){
+		currentStatusPoll(false)
+	    }
 	});
     }
     
     $('body').on('click', '.run-schedule', function(){
 	$.ajax({
 	    type: 'POST',
-	    url: 'runSchedule'
+	    url: 'runSchedule',
+	    success: function(data){
+		currentStatusPoll(false)
+	    }
 	});
     });
     
     $('body').on('click', '.heat-control', function(){
 	$.ajax({
 	    type: 'POST',
-	    url: 'toggleHeat'
+	    url: 'toggleHeat',
+	    success: function(data){
+		currentStatusPoll(false)
+	    }
 	});
     });
     
     $('body').on('click', '.fan-control', function(){
 	$.ajax({
 	    type: 'POST',
-	    url: 'toggleFan'
+	    url: 'toggleFan',
+	    success: function(data){
+		currentStatusPoll(false)
+	    }
 	});
     });
     
@@ -57,7 +69,7 @@ $(function() {
 	$('.schedule-control').addClass('hidden');
     });
     
-    function currentStatusPoll(){
+    function currentStatusPoll(repeat){
 	$.ajax({
 	    type: 'GET',
 	    url: 'currentState',
@@ -105,8 +117,10 @@ $(function() {
 		    fanToggle.removeClass("on");
 		    
 		}
-		
-		setTimeout(currentStatusPoll, 500);
+
+		if(repeat){
+		    setTimeout(function(){currentStatusPoll(true)}, 5000);
+		}
 	    },
 	    error: function(){
 		window.location = '/thermostat'
@@ -114,5 +128,5 @@ $(function() {
 	});
     };
     
-    currentStatusPoll();
+    currentStatusPoll(true);
 });
