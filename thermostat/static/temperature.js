@@ -28,11 +28,7 @@ $(function() {
 	
 	var divX = $('.wrapper').position().left;
 	var divY = $('.wrapper').position().top;
-//	var centerX = divX + 451;
-//	var centerY = divY + 360;
 	var rotation = Math.atan2(centerY - yPoint, centerX - xPoint) * 180 / Math.PI;
-//	$('.cX').text(centerX);
-//	$('.cY').text(centerY);
 	if (rotation > -70 && rotation < 325) {   
 	    $('.touch-box').css({'transform': 'rotate(' + (rotation-45) + 'deg)'});
 	    var adjustedRotation = (rotation-45) + 90;
@@ -160,6 +156,9 @@ $(function() {
 		    fanToggle.removeClass("on");
 		    
 		}
+
+		var hue = 30 + 240 * (30 - target_temperature) / 60;
+		$('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
 
 		if(repeat){
 		    setTimeout(function(){currentStatusPoll(true)}, 5000);
