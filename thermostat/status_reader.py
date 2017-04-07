@@ -67,4 +67,4 @@ class Reader:
 
                 avg_temperature = accum_temperature/accepted_temperature_count 
             #print "New temperature is ", avg_temperature
-            self.current_temp = avg_temperature
+            self.current_temp = (avg_temperature * 1.8) + 32
