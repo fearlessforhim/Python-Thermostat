@@ -12,60 +12,65 @@
 <body>
   <div class="page-controls">
     <div class="r">
-      <div class="c12">
+      <div class="c6">
 	<div class="header-btn thermostat-page-btn">
 	  <div>Thermostat</div>
 	</div>
       </div>
-      <div class="c12">
+      <div class="c6">
 	<div class="header-btn schedule-page-btn">
 	  <div>Schedule</div>
 	</div>
       </div>
     </div>
   </div>
-  <div class="page-control-placeholder">
-    
-  </div>
   <div class="temperature-control">
     <div class="r">
       <div class="temperature-display">
-	<div class="c8">
+	<div class="c12">
 	  <div class="temperature-display-wrapper">
 	    <div class="temporary-notice">Temporary</div>
 	    <div class="running-notice">Running</div>
-	    <div class="target">
-	      <span class="temperature">70</span><span class="degree">&deg;</span>
-	    </div>
-	    <div class="current">
-	      <span class="temperature">70</span><span class="degree">&deg;</span>
-	    </div>
-	    <div class="control-center">
-	      <div class="r">
-		<div class="c12">
-		  <div class="heat-control"><div class="control">Heat<span class="on">ON</span><span class="off">OFF</span></div></div>
-		</div>
+	    <div class='wrapper'>
+	      <div class="touch-box box-1" id='touch-box' data-drag="true" data-rotate="true"  data-resize="true">
+		<div class='grabber'></div>
 	      </div>
-	      <div class="r">
-		<div class="c12">
-		  <div class="fan-control"><div class="control">Fan<span class="on">ON</span><span class="off">OFF</span></div></div>
-		</div>
+	    </div>
+	    <div class='wrapper-back'></div>
+	    <div class='wrapper-front'>
+	      <div class="current">
+		<span class="temperature">70</span><span class="degree">&deg;</span>
 	      </div>
+	      <div class='target'>
+		<span class="temperature">70</span><span class="degree">&deg;</span>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="control-center">
+	    <div class="r">
+	      <div class="c4">
+		<div class="heat-control"><div class="control">Heat is<span class="on">ON</span><span class="off">OFF</span></div></div>
+	      </div>
+	      <div class="c4">
+		<div class="fan-control"><div class="control">Fan is<span class="on">ON</span><span class="off">OFF</span></div></div>
+	      </div>
+	      <div class="c4">
+		<div class="run-schedule"><div class="control">Run Schedule</div></div>
+	      </div>	      
 	    </div>
 	  </div>
 	</div>
       </div>
-      <div class="temperature-action-display">
+<!--      <div class="temperature-action-display">
 	<div class="c4">
 	  <div class="btn temp-change temp-up"><i class="fa fa-angle-up"></i></div>
 	  <div class="btn temp-change temp-down"><i class="fa fa-angle-down"></i></div>
 	  <div class="btn run-schedule">Run Schedule</div>
 	</div>
-      </div>
+      </div>-->
     </div>
   </div>
-  <div id='my-div' style='height: 200px;'>
-    </div>
+
   <div class="schedule-control hidden">
     <div save-row class="save-row">
       <span class='message'></span>

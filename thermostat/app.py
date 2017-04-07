@@ -16,9 +16,9 @@ def index():
 def render_thermostat():
     return render_template('thermostat.html')
 
-@app.route('/schedule')
+@app.route('/playground')
 def render_schedule():
-    return render_template('schedule.html')
+    return render_template('playground.html')
 
 @app.route('/setTemperature', methods=['POST'])
 def set_temperature():

@@ -3,22 +3,20 @@ body {
     margin: 0;
 }
 
-.page-control-placeholder {
-    height: 245px;
-}
 
 .page-control-placeholder.schedule {
     height: 245px;
 }
 
 .page-controls {
-    width: 100%;
+    margin: 10px;
     position: fixed;
-    top: 0;
+    width: 100%;
+    z-index: 999999;
 }
 
 .page-controls .header-btn {
-    background: #111111;
+//    background: #111111;
     padding: 5px 0;
     cursor: pointer;
 }
@@ -27,7 +25,7 @@ body {
     margin: 0 auto;
     color: #AAAAAA;
     text-align: center;
-    font-size: 97px;
+    font-size: 4em;
 }
 
 .page-controls .thermostat-page-btn {
@@ -36,9 +34,59 @@ body {
 
 
 .temperature-control {
+    margin-top: 60px;
+    position: fixed;
     width: 100%;
-    background: #DDD;
+    //    background: #DDD;
     padding: 5px;
+}
+
+.wrapper {
+    position: fixed;
+    height: 450px;
+    width: 450px;
+    padding-top: 175px;
+    padding-left: 226px;
+    z-index: 99;
+}
+
+.wrapper-back {
+    position: fixed;
+    height: 585px;
+    width: 585px;
+    margin-top: 130px;
+    margin-left: 183px;
+//    background: green;
+    border-radius: 50%;
+}
+
+.box-1 {
+    position: absolute;
+    background-color: black;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+//    padding: 200px
+}
+
+.grabber {
+    border-radius: 50%;
+    border: 2px #AAA solid;
+    background: white;
+    height: 80px;
+    width: 80px;
+    float: left;
+    margin: 18px 0 0 18px;
+    //margin: -8px;
+}
+
+.wrapper-front {
+    z-index: 100;
+    position:absolute;
+    height: 360px;
+    width: 360px;
+    top: 254px;
+    left: 279px;
 }
 
 .temperature-control, .schedule-control{
@@ -46,26 +94,26 @@ body {
 }
 
 .temperature-control .temperature-display-wrapper {
-    border-right: 1px solid #999;
+    //border-right: 1px solid #999;
 }
 
 .temperature-control .temperature-display-wrapper .target{
-    width: 67%;
+    width: 32%;
     margin: auto;
 }
 
 .temperature-control .temperature-display-wrapper .target span{
-    font-size: 260px;
+    font-size: 5em;
+    color: white;
 }
 
 
 .temperature-control .temperature-display-wrapper .current{
-    width: 20%;
-    margin: auto;
 }
 
 .temperature-control .temperature-display-wrapper .current span{
-    font-size: 100px;
+    font-size: 15em;
+    color: white;
 }
 
 .temperature-control .temperature-display-wrapper .temporary-notice {
@@ -105,6 +153,7 @@ body {
 .control-center {
     font-size: 30px;
     padding: 0 8px 8px;
+    margin-top: 750px;
 }
 
 .control-center > div {
@@ -114,9 +163,10 @@ body {
     text-align: center;
     margin: auto;
     font-size: 1.5em;
-    background: gray;
+    background: #AAA;
     padding: 4px;
-    border-radius: 3px;
+    margin: 4px;
+    //border-radius: 3px;
     cursor: pointer;
 }
 

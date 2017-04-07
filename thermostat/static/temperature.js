@@ -12,6 +12,49 @@ $(function() {
 	temperature--;
 	postTemperature(temperature);
     });
+
+    var centerY = 405;
+    var centerX = 456;
+
+    var timeout;
+    
+    $('.grabber').on('touchmove', function(e){
+	$('.message .m').text("touch");
+	var xPoint = event.touches[0].pageX;
+	var yPoint = event.touches[0].pageY;
+	$('.message .x').text(xPoint);
+	$('.message .y').text(yPoint);
+	$('.message .r').text(rotation);
+	
+	var divX = $('.wrapper').position().left;
+	var divY = $('.wrapper').position().top;
+//	var centerX = divX + 451;
+//	var centerY = divY + 360;
+	var rotation = Math.atan2(centerY - yPoint, centerX - xPoint) * 180 / Math.PI;
+//	$('.cX').text(centerX);
+//	$('.cY').text(centerY);
+	if (rotation > -70 && rotation < 325) {   
+	    $('.touch-box').css({'transform': 'rotate(' + (rotation-45) + 'deg)'});
+	    var adjustedRotation = (rotation-45) + 90;
+	    var degreeIncrease = adjustedRotation / 6;
+	    var finalDegree = (55 + Math.ceil(degreeIncrease));
+	    var celcius = ((finalDegree -32) * (5/9));
+	    console.log("F Degree value: " + finalDegree);
+	    console.log("C Degree value: " + celcius);
+	    var hue = 30 + 240 * (30 - celcius) / 60;
+	    $('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
+	    $('.wrapper-front .target .temperature').text(finalDegree);
+
+	    if(timeout){
+		clearTimeout(timeout);
+	    }
+
+	    timeout = setTimeout(function() {
+		postTemperature(finalDegree);
+	    }, 1000);
+	}
+	
+    });
     
     function postTemperature(temperature) {
 	$.ajax({
@@ -82,10 +125,10 @@ $(function() {
 		var is_allowing_fan = data['allowingFan'];
 		
 		var currentTempElement = $('.temperature-display .temperature-display-wrapper .current .temperature');
-		var targetTempElement = $('.temperature-display .temperature-display-wrapper .target .temperature');
+		//var targetTempElement = $('.temperature-display .temperature-display-wrapper .target .temperature');
 		var wrapper = $('.temperature-display .temperature-display-wrapper');
 		currentTempElement.html(temperature);
-		targetTempElement.html(target_temperature);
+		//targetTempElement.html(target_temperature);
 		if(temporary){
 		    wrapper.addClass("temporary");
 		} else {
