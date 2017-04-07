@@ -26,7 +26,7 @@ class Reader:
             instance = dht11.DHT11(pin=7)
             temperature_sum = 0
             avg_temperature = 0
-            polls = 6
+            polls = 12
             temperature_list = []
             i = 0
             
@@ -66,6 +66,5 @@ class Reader:
                     l += 1
 
                 avg_temperature = accum_temperature/accepted_temperature_count 
-
+            #print "New temperature is ", avg_temperature
             self.current_temp = avg_temperature
-                                    
