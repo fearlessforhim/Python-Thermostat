@@ -69,7 +69,7 @@ $(function() {
 
     $("body").on("click", ".save-btn", saveAll);
 
-    detectswipe('my-div', alert_func);
+    //detectswipe('my-div', alert_func);
 
     function alert_func(el, dir){
 	//alert("you swiped on element with id '"+el+"' to "+dir+" direction");

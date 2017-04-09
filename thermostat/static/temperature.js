@@ -16,7 +16,8 @@ $(function() {
     var centerY = 405;
     var centerX = 456;
 
-    var timeout;
+    var tempTimeout;
+    var stateTimeout;
     
     $('.grabber').on('touchmove', function(e){
 	$('.message .m').text("touch");
@@ -29,29 +30,42 @@ $(function() {
 	var divX = $('.wrapper').position().left;
 	var divY = $('.wrapper').position().top;
 	var rotation = Math.atan2(centerY - yPoint, centerX - xPoint) * 180 / Math.PI;
-	if (rotation > -70 && rotation < 325) {   
+	//console.log("Rotation: " + rotation);
+	if ((rotation > -50 && rotation < 180) || (rotation > -180 && rotation < -130)) {   
 	    $('.touch-box').css({'transform': 'rotate(' + (rotation-45) + 'deg)'});
-	    var adjustedRotation = (rotation-45) + 90;
-	    var degreeIncrease = adjustedRotation / 6;
-	    var finalDegree = (55 + Math.ceil(degreeIncrease));
-	    var celcius = ((finalDegree -32) * (5/9));
-	    console.log("F Degree value: " + finalDegree);
-	    console.log("C Degree value: " + celcius);
+	    var adjustedRotation;
+	    var degreeIncrease;
+	    if (rotation > -50 && rotation < 180){
+		adjustedRotation = rotation + 50;
+	    } else {
+		adjustedRotation = rotation + 180 + 230;
+	    }
+	    console.log("Adjusted rotation: " + adjustedRotation);
+	    degreeIncrease = adjustedRotation / 9.2;
+	    var finalTemp = (55 + (Math.ceil(degreeIncrease)));
+	    var celcius = ((finalTemp -32) * (5/9));
 	    var hue = 30 + 240 * (30 - celcius) / 60;
 	    $('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
-	    $('.wrapper-front .target .temperature').text(finalDegree);
+	    $('.wrapper-front .target .temperature').text(finalTemp);
 
-	    if(timeout){
-		clearTimeout(timeout);
+	    if(tempTimeout){
+		clearTimeout(tempTimeout);
 	    }
 
-	    timeout = setTimeout(function() {
-		postTemperature(finalDegree);
+	    if(stateTimeout){
+		clearTimeout(stateTimeout);
+		stateTimeout = setTimeout(function() {
+		    currentStatusPoll(true);
+		}, 5000);
+	    }
+
+	    tempTimeout = setTimeout(function() {
+		postTemperature(finalTemp);
 	    }, 1000);
 	}
 	
     });
-    
+
     function postTemperature(temperature) {
 	$.ajax({
 	    type: 'POST',
@@ -121,10 +135,11 @@ $(function() {
 		var is_allowing_fan = data['allowingFan'];
 		
 		var currentTempElement = $('.temperature-display .temperature-display-wrapper .current .temperature');
-		//var targetTempElement = $('.temperature-display .temperature-display-wrapper .target .temperature');
+		var targetTempElement = $('.temperature-display .temperature-display-wrapper .target .temperature');
 		var wrapper = $('.temperature-display .temperature-display-wrapper');
-		currentTempElement.html(temperature);
-		//targetTempElement.html(target_temperature);
+		currentTempElement.html(parseInt(temperature));
+		targetTempElement.html(parseInt(target_temperature));
+		
 		if(temporary){
 		    wrapper.addClass("temporary");
 		} else {
@@ -157,11 +172,17 @@ $(function() {
 		    
 		}
 
-		var hue = 30 + 240 * (30 - target_temperature) / 60;
+		var degreeIncrease = target_temperature - 56
+		var adjustedRotation = degreeIncrease * 9.2;
+		var rotation = adjustedRotation - 90;
+		$('.touch-box').css({'transform': 'rotate(' + (rotation) + 'deg)'});
+		
+		var celcius = ((target_temperature - 32) * (5/9));
+		var hue = 30 + 240 * (30 - celcius) / 60;
 		$('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
 
 		if(repeat){
-		    setTimeout(function(){currentStatusPoll(true)}, 5000);
+		    stateTimeout = setTimeout(function(){currentStatusPoll(true)}, 5000);
 		}
 	    },
 	    error: function(){

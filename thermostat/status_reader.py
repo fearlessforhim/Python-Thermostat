@@ -26,7 +26,7 @@ class Reader:
             instance = dht11.DHT11(pin=7)
             temperature_sum = 0
             avg_temperature = 0
-            polls = 12
+            polls = 20
             temperature_list = []
             i = 0
             
