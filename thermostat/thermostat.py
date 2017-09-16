@@ -6,8 +6,6 @@ import time
 from log import Log
 import copy
 import scheduler as schedule
-import Adafruit_DHT
-
 
 class Thermostat:
     def run(self, f, r):

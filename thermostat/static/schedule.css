@@ -8,6 +8,7 @@
     width: 100%;
     background: #DDD;
     border-bottom: 2px solid #808080;
+    margin-top: 104px;
 }
 
 .schedule-control .save-row .message {
@@ -20,10 +21,10 @@
     float: right;
     padding: 11px 20px;
     font-size: 80px;
-    background:  #01787d;
+    background:  #0085A8;
     border-radius: 5px;
     color: white;
-    border: 2px solid #00634f;
+    border: 2px solid #0C9CE8;
     margin: 20px 40px;
 }
 
@@ -36,7 +37,7 @@
     float: left;
     font-size: 3em;
     padding: 47px 0;
-    background: gray;
+    background: #0ABFB4;
     text-align: center;
     font-weight: bold;
     color: white;
@@ -44,11 +45,11 @@
 }
 
 .schedule-control .day-selector-list .day-select.selected{
-    background: #525252;
+    background: #0085A8;
 }
 
 .schedule-control .list-container {
-    padding-top: 159px;
+    padding-top: 264px;
 }
 
 .schedule-control .day {
@@ -102,6 +103,7 @@
 
 .schedule-control .row-id .actions {
     font-size: 14px;
+    display: none;
 }
 
 .schedule-control .row-id .actions .btn {
@@ -112,6 +114,7 @@
 
 .schedule-control .row-id .actions .btn.schedule-copy-day, .schedule-control .row-id .actions .btn.schedule-copy-week {
     background: #00A9B1;
+    padding: 37px 0px;
 }
 
 .schedule-control .row-id .actions .btn.schedule-copy-week {

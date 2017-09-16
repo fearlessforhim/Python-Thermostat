@@ -2,7 +2,7 @@
 
 import json_file_reader as R
 import sys
-import Adafruit_DHT
+import Adafruit_MCP9808.MCP9808 as MCP9808
 import time
 import math
 import dht11
@@ -21,9 +21,11 @@ class Reader:
     def execute(self):
         GPIO.cleanup()
         GPIO.setmode(GPIO.BOARD)
+
+        sensor = MCP9808.MCP9808()
+        sensor.begin()
         
         while True:
-            instance = dht11.DHT11(pin=7)
             temperature_sum = 0
             avg_temperature = 0
             polls = 20
@@ -31,12 +33,9 @@ class Reader:
             i = 0
             
             while i < polls:
-                result = instance.read()
-                humidity = result.humidity
-                temperature_c = result.temperature
-                if result.is_valid():
-                    temperature_list.append(temperature_c)
-                    i += 1
+                temperature_c = sensor.readTempC()
+                temperature_list.append(temperature_c)
+                i += 1
                 time.sleep(1)
                 
             j = 0

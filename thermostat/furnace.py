@@ -12,31 +12,32 @@ class Furnace:
 
     is_heat_on = False
     is_fan_on = False
-    efficiency = 10
+    efficiency = 50
 
     def run(self):
         GPIO.setmode(GPIO.BOARD)
         while True:
             GPIO.setup(11, GPIO.OUT)
+            GPIO.setup(13, GPIO.OUT)
             if self.is_heat_on:
                 #ensure we are sending a gpio out to relay
                 #current_temperature = float(r.read_value('temperature'))
                 #new_temperature = (current_temperature + .1)
                 #w.write_value('temperature', round(new_temperature, 1))
-                if not GPIO.input(11):
-                    GPIO.output(11, True)
-            else:
                 if GPIO.input(11):
                     GPIO.output(11, False)
+            else:
+                if not GPIO.input(11):
+                    GPIO.output(11, True)
                 #ensure we are NOT sending a gpio out to relay
 
             if self.is_fan_on:
-                pass
-                # w.write_value('fan_on', True)
+                if GPIO.input(13):
+                    GPIO.output(13, False)
                 #ensure we are sending a gpio out to fan relay
             else:
-                pass    
-                # w.write_value('fan_on', False)
+                if not GPIO.input(13):
+                    GPIO.output(13, True)
             #GPIO.cleanup()
             time.sleep(50/self.efficiency);
             #check every 5 seconds whether the gpio should be sending or not

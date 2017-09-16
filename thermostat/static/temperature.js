@@ -44,7 +44,7 @@ $(function() {
 	    degreeIncrease = adjustedRotation / 9.2;
 	    var finalTemp = (55 + (Math.ceil(degreeIncrease)));
 	    var celcius = ((finalTemp -32) * (5/9));
-	    var hue = 30 + 240 * (30 - celcius) / 60;
+	    var hue = 27 + ((finalTemp - 56) * 11.1);
 	    $('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
 	    $('.wrapper-front .target .temperature').text(finalTemp);
 
@@ -178,9 +178,10 @@ $(function() {
 		$('.touch-box').css({'transform': 'rotate(' + (rotation) + 'deg)'});
 		
 		var celcius = ((target_temperature - 32) * (5/9));
-		var hue = 30 + 240 * (30 - celcius) / 60;
-		$('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
-
+		var outer_hue = 27 + ((target_temperature - 56) * 11.1);
+		var inner_hue = 27 + ((temperature - 56) * 11.1);
+		$('.wrapper-back').css({'background-color': 'hsl(' + outer_hue + ', 100%, 50%)'});
+		$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
 		if(repeat){
 		    stateTimeout = setTimeout(function(){currentStatusPoll(true)}, 5000);
 		}

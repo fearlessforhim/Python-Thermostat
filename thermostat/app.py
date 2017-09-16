@@ -53,9 +53,9 @@ def get_current_state():
 
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(11, GPIO.OUT)
-    is_heat_on = GPIO.input(11)
+    is_heat_off = GPIO.input(11)
         
-    return jsonify({"curTemp": status['temperature'], "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_on == 1, "allowingHeat" : settings['heat'], "allowingFan" : settings['fan']})
+    return jsonify({"curTemp": status['temperature'], "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_off == 0, "allowingHeat" : settings['heat'], "allowingFan" : settings['fan']})
 
 @app.route('/toggleHeat', methods=['POST'])
 def toggle_heat():
