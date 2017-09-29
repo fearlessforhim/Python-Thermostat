@@ -1,0 +1,313 @@
+body {
+ font-family: sans-serif;
+    margin: 0;
+}
+
+
+.page-control-placeholder.schedule {
+    height: 245px;
+}
+
+.page-controls {
+    padding: 10px 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+    background: white;
+}
+
+.data-control {
+    
+}
+
+.page-controls .header-btn {
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.page-controls .header-btn > div {
+    margin: 0 auto;
+    color: #AAAAAA;
+    text-align: center;
+    font-size: 4em;
+}
+
+.page-controls .thermostat-page-btn {
+    border-right: 1px solid #444444;
+}
+
+
+.temperature-control {
+    position: fixed;
+    width: 100%;
+    padding: 5px;
+}
+
+.wrapper {
+    position: fixed;
+    height: 450px;
+    width: 450px;
+    padding-top: 175px;
+    padding-left: 226px;
+    z-index: 99;
+}
+
+.wrapper-back {
+    position: fixed;
+    height: 585px;
+    width: 585px;
+    margin-top: 130px;
+    margin-left: 183px;
+    border-radius: 50%;
+    border: 1px solid #E2E2E2;
+}
+
+.box-1 {
+    position: absolute;
+    background-color: black;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+}
+
+.grabber {
+    border-radius: 50%;
+    border: 2px #AAA solid;
+    background: white;
+    height: 80px;
+    width: 80px;
+    float: left;
+    margin: 18px 0 0 18px;
+    //margin: -8px;
+}
+
+.wrapper-front {
+    z-index: 100;
+    position:absolute;
+    height: 360px;
+    width: 360px;
+    top: 254px;
+    left: 279px;
+}
+
+.temperature-control, .schedule-control{
+    margin-top: 0px;
+}
+
+.temperature-control .temperature-display-wrapper {
+    //border-right: 1px solid #999;
+}
+
+.temperature-control .temperature-display-wrapper .target{
+    width: 32%;
+    margin: auto;
+}
+
+.temperature-control .temperature-display-wrapper .target span{
+    font-size: 5em;
+    color: white;
+}
+
+
+.temperature-control .temperature-display-wrapper .current{
+}
+
+.temperature-control .temperature-display-wrapper .current span{
+    font-size: 15em;
+    color: white;
+}
+
+.temperature-control .temperature-display-wrapper .temporary-notice {
+    display: none;
+    position: fixed;
+    top: 112px;
+    background: #09B57A;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0 3px 0 0;
+    font-size: 35px;
+}
+
+.temperature-control .temperature-display-wrapper.temporary .temporary-notice {
+    display: block;
+}
+
+
+.temperature-control .temperature-display-wrapper .running-notice {
+    display: none;
+    position: fixed;
+    background: #09B57A;
+    top: 175px;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+    font-size: 35px;
+}
+
+
+.temperature-control .temperature-display-wrapper.running .running-notice {
+    display: block;
+}
+
+.control-center {
+    font-size: 30px;
+    padding: 0 8px 8px;
+    margin-top: 750px;
+}
+
+.control-center > div {
+}
+
+.control-center .control {
+    text-align: center;
+    margin: auto;
+    font-size: 1.5em;
+    background: #0085A8;
+    padding: 4px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.control-center .heat-control {
+    margin-bottom: 8px;
+}
+
+.control-center .control span{
+    margin: 0 0 0 5px;
+}
+.control-center .off {
+}
+
+
+.control-center .control.on .off {
+    display: none;
+}
+
+.control-center .control.on .on {
+    display: initial;
+}
+
+
+.control-center .control.off .on {
+    display: none;
+}
+
+.control-center .control.off .off {
+    display: initial;
+}
+
+.temperature-control .temperature-action-display .btn{
+    text-align: center;
+    font-size: 215px;
+    margin: 5px 8px;
+}
+
+.temperature-control .temperature-action-display .temp-up{
+	background: #CC7E0B;
+}
+
+.temperature-control .temperature-action-display .temp-down{
+	background: #00A9B1;
+}
+
+
+.temperature-control .temperature-action-display .run-schedule{
+    background: #777;
+    font-size: 41px;
+    padding: 48px 0;
+}
+/*
+.temperature-display {
+	font-family: sans-serif;
+	display: flex;
+}
+
+.temperature-display > div {
+	flex: 1;
+}
+
+.temperature-display .display-target.temporary .temporary-label {
+	display: inline;
+}
+
+.temperature-display .temperature {
+	font-size: 100px;
+}
+
+.temperature-display .display-current.heat-on .temperature{
+	color: #CC7E0B;
+}
+
+.temperature-display .degree {
+	position: relative;
+	top: -47px;
+	font-size: 43px;
+}
+
+
+
+.temp-up {
+	background: #CC7E0B;
+}
+
+.temp-down {
+	background: #00A9B1;
+}
+
+.run-schedule-button {
+	background: #016B01;
+	padding: 5px;
+	padding: 4px 5px;
+}
+
+.run-schedule-button, .temp-change, .set-temperature {
+	text-align: center;
+}
+
+.actions {
+	margin: 27px 6px 0 0;
+}
+
+.actions * {
+	margin: 2px 0px;
+}
+
+.temporary-label {
+	display: none;
+	font-weight: bold;
+	font-style: italic;
+	background: gray;
+	padding: 2px 5px;
+	border-radius: 2px;
+}
+
+.secondary-controls .btn {
+	background: gray;
+	color: black;
+	text-align: center;
+}
+
+.secondary-controls .heat-on .heat-state-off {
+	display: none;
+}
+
+.secondary-controls .heat-off .heat-state-on {
+	display: none;
+}
+
+.secondary-controls .fan-on .fan-state-off {
+	display: none;
+}
+
+.secondary-controls .fan-off .fan-state-on {
+	display: none;
+}
+
+.secondary-controls .btn span {
+    padding: 4px;
+}
+*/
