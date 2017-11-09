@@ -153,6 +153,62 @@ body {
     display: block;
 }
 
+.temperature-control .forecast-display {
+    margin-top: 120px;
+}
+
+.temperature-control .forecast-display .forecast-header {
+    font-size: 3em;
+    border-bottom: 1px solid #CBCBCB;
+}
+
+.temperature-control .forecast-display .forecast-temp {
+    padding: 10px;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-current-title, .forecast-temp-highlow-title, .forecast-temp-current-with-wind-title, .forecast-temp-conditions-title {
+    font-size: 2em;
+    text-align: center;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-current-value, .forecast-temp-highlow-value {
+    font-size: 4em;
+    text-align: center;
+    background: #CBCBCB;
+    border-radius: 3px;
+    margin: 15px;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition {
+    background-size: 100px !important;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.cloudy {
+    background: url(cloudy.png) center no-repeat;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.partly-cloudy {
+    background: url(partly_cloudy.png) center no-repeat;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.rain {
+    background: url(rain.png) center no-repeat;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.light-rain {
+    background: url(rain-light.png) center no-repeat;
+}
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.sunny {
+    background: url(sunny.png) center no-repeat;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition-text {
+    padding: 30px 0px;
+    font-size: 1.5em;
+}
 .control-center {
     font-size: 30px;
     padding: 0 8px 8px;
@@ -220,94 +276,3 @@ body {
     font-size: 41px;
     padding: 48px 0;
 }
-/*
-.temperature-display {
-	font-family: sans-serif;
-	display: flex;
-}
-
-.temperature-display > div {
-	flex: 1;
-}
-
-.temperature-display .display-target.temporary .temporary-label {
-	display: inline;
-}
-
-.temperature-display .temperature {
-	font-size: 100px;
-}
-
-.temperature-display .display-current.heat-on .temperature{
-	color: #CC7E0B;
-}
-
-.temperature-display .degree {
-	position: relative;
-	top: -47px;
-	font-size: 43px;
-}
-
-
-
-.temp-up {
-	background: #CC7E0B;
-}
-
-.temp-down {
-	background: #00A9B1;
-}
-
-.run-schedule-button {
-	background: #016B01;
-	padding: 5px;
-	padding: 4px 5px;
-}
-
-.run-schedule-button, .temp-change, .set-temperature {
-	text-align: center;
-}
-
-.actions {
-	margin: 27px 6px 0 0;
-}
-
-.actions * {
-	margin: 2px 0px;
-}
-
-.temporary-label {
-	display: none;
-	font-weight: bold;
-	font-style: italic;
-	background: gray;
-	padding: 2px 5px;
-	border-radius: 2px;
-}
-
-.secondary-controls .btn {
-	background: gray;
-	color: black;
-	text-align: center;
-}
-
-.secondary-controls .heat-on .heat-state-off {
-	display: none;
-}
-
-.secondary-controls .heat-off .heat-state-on {
-	display: none;
-}
-
-.secondary-controls .fan-on .fan-state-off {
-	display: none;
-}
-
-.secondary-controls .fan-off .fan-state-on {
-	display: none;
-}
-
-.secondary-controls .btn span {
-    padding: 4px;
-}
-*/

@@ -54,6 +54,7 @@ def get_current_state():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(11, GPIO.OUT)
     is_heat_off = GPIO.input(11)
+#    is_heat_off = True
         
     return jsonify({"curTemp": status['temperature'], "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_off == 0, "allowingHeat" : settings['heat'], "allowingFan" : settings['fan']})
 

@@ -98,16 +98,8 @@
 		    <div class="forecast-temp-conditions-title">
 		      Conditions
 		    </div>
-		    <div class="forecast-temp-condition-value" data-forecast-conditions>
-		      <div class="r">
-			<div class="c6">
-			  <div class="condition">
-			  </div>
-			</div>
-			<div class="c6">
-			  <div class="condition-text" data-condition-text>
-			  </div>
-			</div>
+		    <div class="forecast-temp-highlow-value" data-forecast-conditions>
+		      <div class="condition">
 		      </div>
 		    </div>
 		  </div>

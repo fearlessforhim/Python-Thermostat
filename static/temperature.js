@@ -191,6 +191,32 @@ $(function() {
 	    }
 	});
     };
+
+    function _getWeather() {
+        $.ajax({
+            url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22billings%2C%20mt%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+            method: "GET",
+            success: function (response) {
+		var conditions = {
+		    "Mostly Cloudy": "cloudy",
+		    "Partly Cloudy": "partly-cloudy",
+		    "Mostly Sunny": 'sunny'
+		};
+		$('[data-forecast-current] span').html( response.query.results.channel.item.condition.temp);
+		$('[data-high]').html(response.query.results.channel.item.forecast[0].high);
+		$('[data-low]').html(response.query.results.channel.item.forecast[0].low);
+		$('[data-forecast-current-with-wind] span').html(response.query.results.channel.wind.chill);
+
+		var className = conditions[response.query.results.channel.item.forecast[0].text];
+		$('.forecast-temp-condition-value .condition').addClass(className);
+		$('[data-condition-text]').html(response.query.results.channel.item.forecast[0].text);
+                console.log(response);
+                setTimeout(_getWeather, parseInt(response.query.results.channel.ttl) * 1000);
+            }
+        });
+    }
+
+    _getWeather();
     
     currentStatusPoll(true);
 });
