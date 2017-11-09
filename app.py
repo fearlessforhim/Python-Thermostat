@@ -60,8 +60,6 @@ def get_current_state():
 @app.route('/toggleHeat', methods=['POST'])
 def toggle_heat():
     settings = reader.read_json('settings.json')
-    print settings['heat']
-    print not settings['heat']
     settings['heat'] = not settings['heat']
     writer.write_json(settings, 'settings.json')
 
@@ -92,4 +90,4 @@ def set_schedule():
     return jsonify({'response': 'success'})    
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
