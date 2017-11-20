@@ -4,12 +4,20 @@ import datetime
 import os.path
 
 class Log:
-    def log(self, target, current, is_on):
+    def logHistory(self, target, current, is_on):
             file_name = datetime.date.today().strftime("history%m%d%Y.csv")
-            if not os.path.isfile(file_name):
-                fo = open("history.csv", "a")
-                fo.write("Time, Target Temperature, Current Temperature, Is Furnace On\n")
-                fo.close()
             fo = open(file_name, "a")
             fo.write(str(datetime.datetime.now()) + "," + str(target) + "," + str(current) + "," + str(is_on) + "\n")
             fo.close()
+            
+    def log(self, text):
+        file_name = datetime.date.today().strftime("log%m%d%Y.txt")
+        fo = open(file_name, "a")
+        fo.write(text + "\n")
+        fo.close()
+
+    def logApp(self, text):
+        file_name = datetime.date.today().strftime("log%m%d%Y.txt")
+        fo = open(file_name, "a")
+        fo.write(text + "\n")
+        fo.close()

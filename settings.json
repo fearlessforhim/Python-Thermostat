@@ -1,1 +1,266 @@
-{"heat": true, "temporary_temperature": null, "fan": false, "schedules": {"1": [{"start": {"minute": 0, "hour": 0}, "temperature": 58}, {"start": {"minute": 30, "hour": 7}, "temperature": 50}, {"start": {"minute": 0, "hour": 10}, "temperature": 67}], "0": [{"start": {"minute": 45, "hour": 3}, "temperature": 61}, {"start": {"minute": 0, "hour": 10}, "temperature": 67}], "3": [{"start": {"minute": 0, "hour": 0}, "temperature": 67}, {"start": {"minute": 30, "hour": 7}, "temperature": 70}, {"start": {"minute": 0, "hour": 10}, "temperature": 67}], "2": [{"start": {"minute": 0, "hour": 0}, "temperature": 67}, {"start": {"minute": 30, "hour": 7}, "temperature": 70}, {"start": {"minute": 0, "hour": 10}, "temperature": 67}], "5": [{"start": {"minute": 0, "hour": 0}, "temperature": 65}, {"start": {"minute": 30, "hour": 5}, "temperature": 67}, {"start": {"minute": 30, "hour": 7}, "temperature": 69}, {"start": {"minute": 45, "hour": 9}, "temperature": 71}, {"start": {"minute": 30, "hour": 12}, "temperature": 73}, {"start": {"minute": 15, "hour": 15}, "temperature": 75}, {"start": {"minute": 30, "hour": 16}, "temperature": 80}, {"start": {"minute": 0, "hour": 20}, "temperature": 80}], "4": [{"start": {"minute": 0, "hour": 0}, "temperature": 70}, {"start": {"minute": 30, "hour": 7}, "temperature": 70}, {"start": {"minute": 0, "hour": 15}, "temperature": 63}, {"start": {"minute": 15, "hour": 15}, "temperature": 70}, {"start": {"minute": 30, "hour": 15}, "temperature": 75}, {"start": {"minute": 45, "hour": 15}, "temperature": 73}, {"start": {"minute": 0, "hour": 16}, "temperature": 68}, {"start": {"minute": 15, "hour": 16}, "temperature": 80}, {"start": {"minute": 20, "hour": 16}, "temperature": 78}, {"start": {"minute": 25, "hour": 16}, "temperature": 76}, {"start": {"minute": 30, "hour": 16}, "temperature": 74}, {"start": {"minute": 35, "hour": 16}, "temperature": 72}, {"start": {"minute": 40, "hour": 16}, "temperature": 70}, {"start": {"minute": 45, "hour": 16}, "temperature": 68}, {"start": {"minute": 50, "hour": 16}, "temperature": 66}, {"start": {"minute": 55, "hour": 16}, "temperature": 64}], "6": [{"start": {"minute": 0, "hour": 7}, "temperature": 65}, {"start": {"minute": 30, "hour": 5}, "temperature": 67}, {"start": {"minute": 30, "hour": 7}, "temperature": 69}, {"start": {"minute": 45, "hour": 9}, "temperature": 71}, {"start": {"minute": 0, "hour": 10}, "temperature": 73}, {"start": {"minute": 15, "hour": 15}, "temperature": 75}, {"start": {"minute": 30, "hour": 16}, "temperature": 80}, {"start": {"minute": 0, "hour": 20}, "temperature": 80}]}}
+{
+  "heat": true,
+  "temporary_temperature": null,
+  "fan": false,
+  "schedules": {
+    "1": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ],
+    "0": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ],
+    "3": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ],
+    "2": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ],
+    "5": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ],
+    "4": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ],
+    "6": [
+      {
+        "start": {
+          "minute": 0,
+          "hour": 0
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 6
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 10
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 15
+        },
+        "temperature": 68
+      },
+      {
+        "start": {
+          "minute": 0,
+          "hour": 18
+        },
+        "temperature": 68
+      }
+    ]
+  }
+}
