@@ -15,9 +15,3 @@ class Log:
         fo = open(file_name, "a")
         fo.write(text + "\n")
         fo.close()
-
-    def logApp(self, text):
-        file_name = datetime.date.today().strftime("log%m%d%Y.txt")
-        fo = open(file_name, "a")
-        fo.write(text + "\n")
-        fo.close()
