@@ -1,2 +1,5 @@
 *.pyc
 *.*~
+*.log
+settings.json
+status.json
