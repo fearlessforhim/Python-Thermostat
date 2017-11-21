@@ -1,5 +1,5 @@
 *.pyc
 *.*~
-*.log
+log*.txt
 settings.json
 status.json
