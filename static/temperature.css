@@ -210,13 +210,13 @@ body {
     background: url(sunny.png) center no-repeat;
 }
 
-.temperature-control .forecase-display .forecast-temp .forecast-temp-condition-value .condition.snow-s-rain {
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.snow-s-rain {
     background: url(snow-s-rain.png) center no-repeat;
 }
-.temperature-control .forecase-display .forecast-temp .forecast-temp-condition-value .condition.scattered-showers {
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.scattered-showers {
     background: url(scattered-showers.png) center no-repeat;
 }
-.temperature-control .forecase-display .forecast-temp .forecast-temp-condition-value .condition.snow {
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.snow {
     background: url(snow.png) center no-repeat;
 }
 
