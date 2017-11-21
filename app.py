@@ -23,7 +23,6 @@ def render_schedule():
 @app.route('/setTemperature', methods=['POST'])
 def set_temperature():
     if not request.json or not 'temperature' in request.json:
-        print "Request is the following: ", request.json
         return jsonify({'response': 'error'})
     
     settings = reader.read_json('settings.json')
@@ -81,7 +80,6 @@ def get_schedule_data():
 @app.route('/setSchedule', methods=['POST'])
 def set_schedule():
     if not request.json:
-        print "Request is the following: ", request.json
         return jsonify({'response': 'error'})
     
     settings = reader.read_json('settings.json')

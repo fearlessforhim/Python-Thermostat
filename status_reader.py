@@ -6,6 +6,7 @@ import Adafruit_MCP9808.MCP9808 as MCP9808
 import time
 import math
 import RPi.GPIO as GPIO
+from log import Log
 
 class Reader:
 
@@ -18,6 +19,7 @@ class Reader:
         return self.current_temp
     
     def execute(self):
+        log = Log()
         GPIO.cleanup()
         GPIO.setmode(GPIO.BOARD)
 
@@ -38,7 +40,7 @@ class Reader:
                     i += 1
                     time.sleep(1)
                 except IOError as ex:
-                    print ex
+                    log.log(str(ex))
                 
             j = 0
             
@@ -60,7 +62,7 @@ class Reader:
             l = 0
             accum_temperature = 0
             if accepted_temperature_count == 0:
-                print 'Too much variation'
+                log.log("Too much variation")
             else:
                 while l < accepted_temperature_count:
                     accum_temperature += accepted_temperatures[l]
