@@ -185,7 +185,7 @@ $(function() {
 
 		var dt = new Date();
 		var time = dt.getHours() + ":" + dt.getMinutes()
-		$('.forecast-header .span').html(time);
+		$('.forecast-header span').html(time);
 		
 		if(repeat){
 		    stateTimeout = setTimeout(function(){currentStatusPoll(true)}, 5000);
