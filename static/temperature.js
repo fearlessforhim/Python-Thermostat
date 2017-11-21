@@ -182,6 +182,11 @@ $(function() {
 		var inner_hue = 27 + ((temperature - 56) * 11.1);
 		$('.wrapper-back').css({'background-color': 'hsl(' + outer_hue + ', 100%, 50%)'});
 		$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
+
+		var dt = new Date();
+		var time = dt.getHours() + ":" + dt.getMinutes()
+		$('.forecast-header .span').html(time);
+		
 		if(repeat){
 		    stateTimeout = setTimeout(function(){currentStatusPoll(true)}, 5000);
 		}
@@ -198,9 +203,20 @@ $(function() {
             method: "GET",
             success: function (response) {
 		var conditions = {
-		    "Mostly Cloudy": "cloudy",
+		    "Mostly Cloudy": 'cloudy',
+		    "Cloudy": 'cloudy',
 		    "Partly Cloudy": "partly-cloudy",
-		    "Mostly Sunny": 'sunny'
+		    "Mostly Sunny": 'sunny',
+		    "Snow Showers": 'snow-s-rain',
+		    "Rain And Snow": 'snow-s-rain',
+		    "Rain": 'rain',
+		    'Showers': 'scattered-showers',
+		    "Scattered Showers": 'scattered-showers',
+		    'Windy': 'windy',
+		    'Breezy': 'windy',
+		    'Blowing Snow': 'blowing-snow',
+		    'Snow': 'snow',
+		    'Sunny': 'sunny'
 		};
 		$('[data-forecast-current] span').html( response.query.results.channel.item.condition.temp);
 		$('[data-high]').html(response.query.results.channel.item.forecast[0].high);
