@@ -17,7 +17,7 @@ body {
 }
 
 .data-control {
-    
+
 }
 
 .page-controls .header-btn {
@@ -210,13 +210,13 @@ body {
     background: url(sunny.png) center no-repeat;
 }
 
-.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.snow-s-rain {
+.temperature-control .forecase-display .forecast-temp .forecast-temp-condition-value .condition.snow-s-rain {
     background: url(snow-s-rain.png) center no-repeat;
 }
-.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.scattered-showers {
+.temperature-control .forecase-display .forecast-temp .forecast-temp-condition-value .condition.scattered-showers {
     background: url(scattered-showers.png) center no-repeat;
 }
-.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.snow {
+.temperature-control .forecase-display .forecast-temp .forecast-temp-condition-value .condition.snow {
     background: url(snow.png) center no-repeat;
 }
 
@@ -290,4 +290,21 @@ body {
     background: #777;
     font-size: 41px;
     padding: 48px 0;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+
+  .forecast-display{
+    margin-top: 0px;
+  }
+
+  .mc12 {
+    float: left;
+    padding: 0;
+    position: relative;
+    min-height: 1px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100% !important;
+  }
 }
