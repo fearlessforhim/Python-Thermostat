@@ -185,7 +185,7 @@ $(function() {
 
 		var dt = new Date();
 		var time = dt.getHours() + ":" + dt.getMinutes()
-		$('.forecast-header .span').html(time);
+		$('.forecast-header span').html(time);
 		
 		if(repeat){
 		    stateTimeout = setTimeout(function(){currentStatusPoll(true)}, 5000);
@@ -223,9 +223,9 @@ $(function() {
 		$('[data-low]').html(response.query.results.channel.item.forecast[0].low);
 		$('[data-forecast-current-with-wind] span').html(response.query.results.channel.wind.chill);
 
-		var className = conditions[response.query.results.channel.item.forecast[0].text];
+		var className = conditions[response.query.results.channel.item.condition.text];
 		$('.forecast-temp-condition-value .condition').addClass(className);
-		$('[data-condition-text]').html(response.query.results.channel.item.forecast[0].text);
+		$('[data-condition-text]').html(response.query.results.channel.item.condition.text);
                 console.log(response);
                 setTimeout(_getWeather, parseInt(response.query.results.channel.ttl) * 1000);
             }
