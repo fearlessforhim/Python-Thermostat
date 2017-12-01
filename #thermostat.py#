@@ -10,8 +10,7 @@ import scheduler as schedule
 class Thermostat:
     def run(self, f, r):
         l = Log()
-        flex_temperature = 0.25
-        
+        flex_temperature = 0.35
 
         while True:
             
@@ -20,7 +19,7 @@ class Thermostat:
             target_temperature = schedule.get_scheduled_target_temperature(data)
 
             if "temporary_temperature" in data and data["temporary_temperature"] is not None:
-                print "Temporary target temperature is set"
+                l.log("Temporary target temperature is set")
                 target_temperature = data["temporary_temperature"]
 
             current_temperature = None
@@ -31,28 +30,28 @@ class Thermostat:
                 
             should_run_heat = data["heat"]
             should_run_fan = data["fan"]
-            print "Current temperature is : ", current_temperature
-            print "Target temperature is : ", target_temperature
-            print "Furnace heat setting is on: ", should_run_heat
-            print "Furnace fan setting is on: ", should_run_fan
+            l.log("Current temperature is : " + str(current_temperature))
+            l.log("Target temperature is : " + str(target_temperature))
+            l.log("Furnace heat setting is on: " + str(should_run_heat))
+            l.log("Furnace fan setting is on: " + str(should_run_fan))
 
             if should_run_heat:
                 if current_temperature > (target_temperature + flex_temperature):
                     if f.is_heat_on:
                         f.is_heat_on = False
-                        print "Furnace has been turned off"
-                elif current_temperature <= (target_temperature - flex_temperature):
+                        l.log("Furnace has been turned off")
+                elif current_temperature <= (target_temperature - flex_temperature) and current_temperature != 0:
                     if not f.is_heat_on:
                         f.is_heat_on = True
-                        print "Furnace has been turned on"
+                        l.log("Furnace has been turned on")
             else:
                 f.is_heat_on = False
 
             f.is_fan_on = should_run_fan
 
             if f.is_heat_on:
-                print "Running..."
+                l.log("Running...")
 
-            print ""
-            l.log(target_temperature, current_temperature, f.is_heat_on)
+            l.log("")
+            l.logHistory(target_temperature, current_temperature, f.is_heat_on)
             time.sleep(5)

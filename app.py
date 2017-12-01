@@ -43,7 +43,8 @@ def run_schedule():
 def get_current_state():
     status = reader.read_json('status.json')
     settings = reader.read_json('settings.json')
-
+    message = reader.read_json('message.json')
+    
     target_temp = schedule.get_scheduled_target_temperature(settings)
     using_temporary_temperature = settings['temporary_temperature'] is not None
     
@@ -55,7 +56,7 @@ def get_current_state():
     is_heat_off = GPIO.input(11)
 #    is_heat_off = True
         
-    return jsonify({"curTemp": status['temperature'], "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_off == 0, "allowingHeat" : settings['heat'], "allowingFan" : settings['fan']})
+    return jsonify({"curTemp": status['temperature'], "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_off == 0, "allowingHeat" : settings['heat'], "allowingFan" : settings['fan'], "message" : message['message']})
 
 @app.route('/toggleHeat', methods=['POST'])
 def toggle_heat():
@@ -86,7 +87,12 @@ def set_schedule():
     settings['schedules'] = request.json
     writer.write_json(settings, 'settings.json')
         
-    return jsonify({'response': 'success'})    
+    return jsonify({'response': 'success'})
+
+@app.route('/getMessage', methods=['GET'])
+def get_message():
+    message = reader.read_json('message.json')
+    return jsonify({"message": message["message"]})
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0')
