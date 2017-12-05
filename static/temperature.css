@@ -74,8 +74,8 @@ body {
     border-radius: 50%;
     border: 2px #AAA solid;
     background: white;
-    height: 80px;
-    width: 80px;
+    height: 115px;
+    width: 115px;
     float: left;
     margin: 18px 0 0 18px;
     //margin: -8px;
@@ -164,7 +164,7 @@ body {
 
 .temperature-control .forecast-display .forecast-header .time {
     float: right;
-    margin-right: 130px;
+    margin-right: 25px;
 }
 
 .temperature-control .forecast-display .forecast-temp {
