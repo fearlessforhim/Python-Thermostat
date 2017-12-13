@@ -40,8 +40,8 @@ $(function() {
 	    } else {
 		adjustedRotation = rotation + 180 + 230;
 	    }
-	    console.log("Adjusted rotation: " + adjustedRotation);
-	    degreeIncrease = adjustedRotation / 9.2;
+	    //console.log("Adjusted rotation: " + adjustedRotation);
+	    degreeIncrease = adjustedRotation / 10.5;
 	    var finalTemp = (55 + (Math.ceil(degreeIncrease)));
 	    var celcius = ((finalTemp -32) * (5/9));
 	    var hue = 27 + ((finalTemp - 56) * 11.1);
@@ -173,7 +173,7 @@ $(function() {
 		}
 
 		var degreeIncrease = target_temperature - 56
-		var adjustedRotation = degreeIncrease * 9.2;
+		var adjustedRotation = degreeIncrease * 10.5;
 		var rotation = adjustedRotation - 90;
 		$('.touch-box').css({'transform': 'rotate(' + (rotation) + 'deg)'});
 		
@@ -184,7 +184,9 @@ $(function() {
 		$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
 
 		var dt = new Date();
-		var time = dt.getHours() + ":" + dt.getMinutes()
+		var minutes = dt.getMinutes();
+		var sMinutes = minutes < 10 ? "0" + minutes : "" + minutes;
+		var time = dt.getHours() + ":" + sMinutes;
 		$('.forecast-header span').html(time);
 
 		$('.custom-message').html(data['message']);
@@ -228,7 +230,7 @@ $(function() {
 		var className = conditions[response.query.results.channel.item.condition.text];
 		$('.forecast-temp-condition-value .condition').addClass(className);
 		$('[data-condition-text]').html(response.query.results.channel.item.condition.text);
-                console.log(response);
+                //console.log(response);
                 setTimeout(_getWeather, parseInt(response.query.results.channel.ttl) * 1000);
             }
         });

@@ -95,4 +95,6 @@ def get_message():
     return jsonify({"message": message["message"]})
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    config = reader.read_json('config.json')
+    portNum = int(config["portNum"])
+    app.run(debug=False, host='0.0.0.0', port=portNum)
