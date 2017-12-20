@@ -1,4 +1,9 @@
 $(function() {
+
+    $('body').on('contextmenu', function(e){
+	return false;
+    });
+    
     $('body').on('click', '.temp-up', function(){
 	var tempElement = $('.temperature-display .temperature-display-wrapper .target .temperature');
 	var temperature = parseInt(tempElement.html());
@@ -226,11 +231,11 @@ $(function() {
 		$('[data-high]').html(response.query.results.channel.item.forecast[0].high);
 		$('[data-low]').html(response.query.results.channel.item.forecast[0].low);
 		$('[data-forecast-current-with-wind] span').html(response.query.results.channel.wind.chill);
+		$('[data-humidity]').html(response.query.results.channel.atmosphere.humidity);
 
 		var className = conditions[response.query.results.channel.item.condition.text];
 		$('.forecast-temp-condition-value .condition').addClass(className);
 		$('[data-condition-text]').html(response.query.results.channel.item.condition.text);
-                //console.log(response);
                 setTimeout(_getWeather, parseInt(response.query.results.channel.ttl) * 1000);
             }
         });

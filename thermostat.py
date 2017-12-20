@@ -10,8 +10,8 @@ import scheduler as schedule
 class Thermostat:
     def run(self, f, r):
         l = Log()
-        flex_temperature = -0.2
-        flex_low = .5
+        flex_temperature = 0.25
+        flex_low = .475
 
         while True:
             
@@ -37,7 +37,7 @@ class Thermostat:
             l.log("Furnace fan setting is on: " + str(should_run_fan))
 
             if should_run_heat:
-                if current_temperature > (target_temperature + flex_temperature):
+                if current_temperature > (target_temperature - flex_temperature):
                     if f.is_heat_on:
                         f.is_heat_on = False
                         l.log("Furnace has been turned off")

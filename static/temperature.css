@@ -170,17 +170,23 @@ body {
     padding: 10px;
 }
 
-.temperature-control .forecast-display .forecast-temp .forecast-temp-current-title, .forecast-temp-highlow-title, .forecast-temp-current-with-wind-title, .forecast-temp-conditions-title {
+.temperature-control .forecast-display .forecast-temp .forecast-temp-current-title, .forecast-temp-highlow-title, .forecast-temp-current-with-wind-title, .forecast-temp-conditions-title, .humidity-title {
     font-size: 2em;
     text-align: center;
 }
 
-.temperature-control .forecast-display .forecast-temp .forecast-temp-current-value, .forecast-temp-highlow-value {
+.temperature-control .forecast-display .forecast-temp .forecast-temp-current-value, .forecast-temp-highlow-value, .humidity-value {
     font-size: 4em;
     text-align: center;
     background: #CBCBCB;
     border-radius: 3px;
-    margin: 15px;
+    margin: 0 15px 15px 15px;
+}
+
+.temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value {
+    border: #CBCBCB solid 2px;
+    border-radius: 7px;
+    margin: 0px 14px;
 }
 
 .temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition {
@@ -188,6 +194,8 @@ body {
     margin: auto;
     width: 100px;
     height: 100px;
+    margin-top: -13px;
+    margin-bottom: -17px;
 }
 
 .temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition.cloudy {
@@ -220,7 +228,7 @@ body {
 }
 
 .temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition-text {
-    padding: 30px 0px;
+    padding: 21px 0px;
     font-size: 1.5em;
 }
 
@@ -267,6 +275,10 @@ body {
     display: none;
 }
 
+.control-center .heat-control .control.off {
+    background: #fb8b00;
+}
+
 .control-center .control.on .on {
     display: initial;
 }
@@ -293,7 +305,6 @@ body {
 .temperature-control .temperature-action-display .temp-down{
 	background: #00A9B1;
 }
-
 
 .temperature-control .temperature-action-display .run-schedule{
     background: #777;
