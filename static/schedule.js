@@ -69,13 +69,9 @@ $(function() {
 
     $("body").on("click", ".save-btn", saveAll);
 
-    //detectswipe('my-div', alert_func);
 
     function alert_func(el, dir){
-	//alert("you swiped on element with id '"+el+"' to "+dir+" direction");
 	var me = $(this);
-	//console.log('captured swipe');
-	//$('.save-row .message').text('captured-swipce');
 	var currentList = me.find('.day-list:not(.hidden)');
 	var currentDay = currentList.data('selector');
 	var currentSelectorElement = $('.list-container [data-day="' + currentDay + '"]');
@@ -105,7 +101,6 @@ $(function() {
 	    swipe_det.sY = t.screenY;
 	},false);
 	ele.addEventListener('touchmove',function(e){
-	    //e.preventDefault();
 	    var t = e.touches[0];
 	    swipe_det.eX = t.screenX; 
 	    swipe_det.eY = t.screenY;    
@@ -131,19 +126,32 @@ $(function() {
     }
     
     function render(data){
-	var daily_schedules = data['schedules'];
+	var sql_schedules = $.parseJSON(data);
+
 	var sorted_schedules = {};
 	var dayNames = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-	for(var x = 0; x < 7; x++){
-	    var dayName = dayNames[x];
-	    var day = daily_schedules[''+x];
+	var day_schedules = {"0": [], "1": [], "2": [], "3": [], "4": [], "5": [], "6": []}
+	for(var x = 0; x < sql_schedules.length; x++){
+	    var sched_item = {};
+	    sched_item['id'] = sql_schedules[x].id;
+	    sched_item['minute'] = sql_schedules[x].minute;
+	    sched_item['hour'] = sql_schedules[x].hour;
+	    sched_item['temperature'] = sql_schedules[x].temperature;
+	    day_schedules[""+ sql_schedules[x].dayOfWeek].push(sched_item);
+	}
 
-	    for(item in day){
-		var startHour = day[item].start.hour;
-		var startMin = day[item].start.minute;
-		var temperature = day[item].temperature;
+	for(var dayId = 0; dayId < 7; dayId++) {
+	    var dayName = dayNames[dayId];
+	    for (var schedId = 0; schedId < day_schedules[dayId].length; schedId++){
+
+		var id = day_schedules[dayId][schedId].id;
+		var startHour = day_schedules[dayId][schedId].hour;
+		var startMin = day_schedules[dayId][schedId].minute;
+		var temperature = day_schedules[dayId][schedId].temperature;
+
 		var schedRowClone = $('#schedule-row-template .row-id').clone();
-		schedRowClone.attr('data-dayid',x);
+		schedRowClone.attr('id', id);
+		schedRowClone.attr('data-dayid', dayId);
 		schedRowClone.find('.start-hour').text(startHour == "0" ? "00": startHour);
 		schedRowClone.find('.start-minute').text(startMin == "0" ? "00": startMin);
 		schedRowClone.find('.temperature').text(temperature);
@@ -171,27 +179,21 @@ $(function() {
     }
 
     function saveAll(){
-	var schedules = {};
+	var schedules = [];
 	var listContainer = $("[list-container]");
 	listContainer.find(".row-id").each(function(idx, row){
 	    var me = $(this)
-	    var dayId = parseInt(me.data('dayid')).toString();
+	    var sqlId = parseInt(me.attr('id'));
 
-	    if(!schedules[dayId]) {
-		schedules[dayId] = [];
-	    }
-	    
-	    var day = schedules[dayId];
-	    var startHour = parseInt(me.find('.start-hour').text())
-	    var startMinute = parseInt(me.find('.start-minute').text());
+	    var hour = parseInt(me.find('.start-hour').text())
+	    var minute = parseInt(me.find('.start-minute').text());
 	    var temperature = parseInt(me.find('.temperature').text());
-	    day.push({
-		"start": {
-		    "hour": startHour,
-		    "minute": startMinute,
-		},
+	    schedules.push({
+		"id": sqlId,
+		"hour": hour,
+		"minute": minute,
 		"temperature": temperature
-	    })
+	    });
 	    
 	});
 

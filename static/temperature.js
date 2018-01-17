@@ -35,7 +35,7 @@ $(function() {
 	var divX = $('.wrapper').position().left;
 	var divY = $('.wrapper').position().top;
 	var rotation = Math.atan2(centerY - yPoint, centerX - xPoint) * 180 / Math.PI;
-	//console.log("Rotation: " + rotation);
+
 	if ((rotation > -50 && rotation < 180) || (rotation > -180 && rotation < -130)) {   
 	    $('.touch-box').css({'transform': 'rotate(' + (rotation-45) + 'deg)'});
 	    var adjustedRotation;
@@ -45,11 +45,11 @@ $(function() {
 	    } else {
 		adjustedRotation = rotation + 180 + 230;
 	    }
-	    //console.log("Adjusted rotation: " + adjustedRotation);
-	    degreeIncrease = adjustedRotation / 10.5;
-	    var finalTemp = (55 + (Math.ceil(degreeIncrease)));
-	    var celcius = ((finalTemp -32) * (5/9));
-	    var hue = 27 + ((finalTemp - 56) * 11.1);
+
+	    degreeIncrease = adjustedRotation / 15.56;
+	    var finalTemp = (57 + (Math.ceil(degreeIncrease)));
+	    var celcius = ((finalTemp - 32) * (5/9));
+	    var hue = 27 + ((finalTemp - 57) * 15.56);
 	    $('.wrapper-back').css({'background-color': 'hsl(' + hue + ', 100%, 50%)'});
 	    $('.wrapper-front .target .temperature').text(finalTemp);
 
@@ -96,6 +96,8 @@ $(function() {
 	    }
 	});
     });
+
+    
     
     $('body').on('click', '.heat-control', function(){
 	$.ajax({
@@ -116,6 +118,17 @@ $(function() {
 	    }
 	});
     });
+
+    $('body').on('click', '.hold-temperature', function(){
+	$.ajax({
+	    type: 'POST',
+	    url: 'holdTemperature',
+	    success: function(data){
+		currentStatusPoll(false)
+	    }
+	});
+    });
+    
     
     $('body').on('click', '.schedule-page-btn', function(){
 	$('.temperature-control').addClass('hidden');
@@ -126,16 +139,57 @@ $(function() {
 	$('.temperature-control').removeClass('hidden');
 	$('.schedule-control').addClass('hidden');
     });
+
+    $('body').on('click', '[data-settings]', function(){
+	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+	    (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+	    if (document.documentElement.requestFullScreen) {
+		document.documentElement.requestFullScreen();
+	    } else if (document.documentElement.mozRequestFullScreen) {
+		document.documentElement.mozRequestFullScreen();
+	    } else if (document.documentElement.webkitRequestFullScreen) {
+		document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+	    }
+	} else {
+	    if (document.cancelFullScreen) {
+		document.cancelFullScreen();
+	    } else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+	    } else if (document.webkitCancelFullScreen) {
+		document.webkitCancelFullScreen();
+	    }
+	}  
+    });
+
+    $('[data-settings]').trigger('click');
     
     function currentStatusPoll(repeat){
 	$.ajax({
 	    type: 'GET',
 	    url: 'currentState',
 	    success: function(data){
+		if(data['errorMessage']){
+
+		    if(repeat){
+			stateTimeout = setTimeout(function(){currentStatusPoll(true)}, 5000);
+		    }
+		    return;
+		}
+
+		var d = new Date();
+		var current_hour = d.getHours();
+
+		if(current_hour < 8 || current_hour >= 20){
+		    $("body").addClass("dark-theme");
+		}else{
+		    $("body").removeClass("dark-theme");
+		}
+		
 		var temperature = data['curTemp'];
 		var temporary = data['usingTemporary'];
                 var target_temperature = data['targetTemp'];
 		var is_heat_on = data['isHeatOn'];
+		var is_held = data['temperature_held'];
 		var is_allowing_heat = data['allowingHeat'];
 		var is_allowing_fan = data['allowingFan'];
 		
@@ -155,6 +209,12 @@ $(function() {
 		    wrapper.addClass("running");
 		} else {
 		    wrapper.removeClass("running");
+		}
+
+		if(is_held) {
+		    wrapper.addClass("holding");
+		} else {
+		    wrapper.removeClass("holding");
 		}
 		
 		var heatToggle = $(".heat-control .control");
@@ -177,16 +237,16 @@ $(function() {
 		    
 		}
 
-		var degreeIncrease = target_temperature - 56
-		var adjustedRotation = degreeIncrease * 10.5;
+		var degreeIncrease = target_temperature - 58;
+		var adjustedRotation = degreeIncrease * 15.56;
 		var rotation = adjustedRotation - 90;
 		$('.touch-box').css({'transform': 'rotate(' + (rotation) + 'deg)'});
 		
 		var celcius = ((target_temperature - 32) * (5/9));
-		var outer_hue = 27 + ((target_temperature - 56) * 11.1);
-		var inner_hue = 27 + ((temperature - 56) * 11.1);
+		var outer_hue = 27 + ((target_temperature - 58) * 15.56);
+		var inner_hue = 27 + ((temperature - 58) * 15.56);
 		$('.wrapper-back').css({'background-color': 'hsl(' + outer_hue + ', 100%, 50%)'});
-		$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
+		//$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
 
 		var dt = new Date();
 		var minutes = dt.getMinutes();
@@ -225,7 +285,8 @@ $(function() {
 		    'Breezy': 'windy',
 		    'Blowing Snow': 'blowing-snow',
 		    'Snow': 'snow',
-		    'Sunny': 'sunny'
+		    'Sunny': 'sunny',
+		    'Clear': 'sunny'
 		};
 		$('[data-forecast-current] span').html( response.query.results.channel.item.condition.temp);
 		$('[data-high]').html(response.query.results.channel.item.forecast[0].high);
@@ -241,7 +302,25 @@ $(function() {
         });
     }
 
+    var inner_hue = 0;
+    
+    function _rainbow(){
+
+	inner_hue++;
+
+	if(inner_hue > 360){
+	    inner_hue = 0;
+	}
+	$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
+	
+	setTimeout(_rainbow, 100);
+    }
+
+    _rainbow();
+
     _getWeather();
     
     currentStatusPoll(true);
+
+    
 });

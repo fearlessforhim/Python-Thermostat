@@ -32,10 +32,16 @@ body {
     font-size: 4em;
 }
 
-.page-controls .thermostat-page-btn {
+.page-controls .thermostat-page-btn, .schedule-page-btn {
     border-right: 1px solid #444444;
 }
 
+.page-controls .settings-page-btn {
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+    padding-top: 11px;
+}
 
 .temperature-control {
     position: fixed;
@@ -147,6 +153,22 @@ body {
     font-size: 35px;
 }
 
+.temperature-control .temperature-display-wrapper .hold-notice {
+    display: none;
+    position: fixed;
+    background: #09B57A;
+    top: 238px;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+    font-size: 35px;
+}
+
+.temperature-control .temperature-display-wrapper.holding .hold-notice {
+    display: block;
+}
 
 .temperature-control .temperature-display-wrapper.running .running-notice {
     display: block;
@@ -163,7 +185,7 @@ body {
 
 .temperature-control .forecast-display .forecast-header .time {
     float: right;
-    margin-right: 25px;
+    margin-right: 125px;
 }
 
 .temperature-control .forecast-display .forecast-temp {
@@ -190,11 +212,11 @@ body {
 }
 
 .temperature-control .forecast-display .forecast-temp .forecast-temp-condition-value .condition {
-    background-size: 100px !important;
+    background-size: 90px !important;
     margin: auto;
     width: 100px;
     height: 100px;
-    margin-top: -13px;
+    margin-top: -18px;
     margin-bottom: -17px;
 }
 
@@ -311,6 +333,49 @@ body {
     font-size: 41px;
     padding: 48px 0;
 }
+
+body.dark-theme {
+    background: black;
+}
+
+body.dark-theme .temperature-control {
+    background: black;
+}
+
+body.dark-theme .page-controls {
+    background: black;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-header {
+    color: white;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .forecast-temp-current-title {
+    color: white;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .forecast-temp-highlow-title{
+    color: white;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .forecast-temp-current-with-wind-title{
+    color: white;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .forecast-temp-conditions-title{
+    color: white;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .forecast-temp-\
+condition-value .condition-text {
+    color: white;
+}
+
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .humidity-title {
+    color: white;
+}
+
+
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 650px) {
 

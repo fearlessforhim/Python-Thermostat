@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import json_file_reader as R
 import sys
 import Adafruit_MCP9808.MCP9808 as MCP9808
 import time
@@ -20,16 +19,14 @@ class Reader:
     
     def execute(self):
         log = Log()
-        GPIO.cleanup()
-        GPIO.setmode(GPIO.BOARD)
-
+        
         sensor = MCP9808.MCP9808()
         sensor.begin()
         
         while True:
             temperature_sum = 0
             avg_temperature = 0
-            polls = 20
+            polls = 10
             temperature_list = []
             i = 0
             

@@ -2,9 +2,12 @@
 
 from flask import Flask, render_template, request, jsonify
 import json_file_reader as reader
-import json_file_writer as writer
 import scheduler as schedule
-import RPi.GPIO as GPIO
+import sql_temperature
+import sql_status
+import sql_settings
+import datetime
+import json
 
 app = Flask(__name__)
 
@@ -25,74 +28,93 @@ def set_temperature():
     if not request.json or not 'temperature' in request.json:
         return jsonify({'response': 'error'})
     
-    settings = reader.read_json('settings.json')
-    settings['temporary_temperature'] = int(request.json['temperature'])
-    writer.write_json(settings, 'settings.json')
+    sql_temperature.set_target(int(request.json['temperature']))
+    sql_settings.set_is_temporary_set(True)
         
     return jsonify({'response': 'success'})
 
 @app.route('/runSchedule', methods=['POST'])
 def run_schedule():
-    settings = reader.read_json('settings.json')
-    settings['temporary_temperature'] = None
-    writer.write_json(settings, 'settings.json')
+    sql_settings.set_is_temporary_set(False)
+    sql_settings.set_is_temperature_held(False)
+    return jsonify({'response': 'success'})
 
+@app.route('/holdTemperature', methods=['POST'])
+def hold_temperature():
+    is_held = sql_settings.get_is_temperature_held()
+    sql_settings.set_is_temperature_held(not is_held)
+    if not is_held:
+        if not sql_settings.get_is_temporary_set():
+            sql_settings.set_is_temporary_set(True)
+            now = datetime.datetime.today()
+            target_temp, idx = schedule.get_scheduled_target_temperature(now.weekday(), now.hour, now.minute)
+            sql_temperature.set_target(target_temp)
+    else:
+        sql_settings.set_is_temporary_set(False)
+            
     return jsonify({'response': 'success'})
 
 @app.route('/currentState', methods=['GET'])
 def get_current_state():
-    status = reader.read_json('status.json')
-    settings = reader.read_json('settings.json')
-    message = reader.read_json('message.json')
-    
-    target_temp = schedule.get_scheduled_target_temperature(settings)
-    using_temporary_temperature = settings['temporary_temperature'] is not None
-    
-    if using_temporary_temperature:
-        target_temp = settings['temporary_temperature']
+    try:
+        message = reader.read_json('message.json')
 
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(11, GPIO.OUT)
-    is_heat_off = GPIO.input(11)
-#    is_heat_off = True
+        target_temp = sql_temperature.get_target()
+        current_temp = sql_temperature.get_current()
+
+        using_temporary_temperature = sql_settings.get_is_temporary_set()
+        is_held = sql_settings.get_is_temperature_held()
+    
+        if not using_temporary_temperature:
+            now = datetime.datetime.today()
+            target_temp, idx = schedule.get_scheduled_target_temperature(now.weekday(), now.hour, now.minute)
+
+        is_heat_on_s = sql_status.get_is_heat_on()
+        allowing_heat = sql_settings.get_is_heat_on()
+        allowing_fan = sql_settings.get_is_fan_on()
+
         
-    return jsonify({"curTemp": status['temperature'], "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_off == 0, "allowingHeat" : settings['heat'], "allowingFan" : settings['fan'], "message" : message['message']})
+        return jsonify({"curTemp": current_temp, "usingTemporary": using_temporary_temperature, "targetTemp": target_temp, "isHeatOn": is_heat_on_s, "allowingHeat" : allowing_heat, "allowingFan" : allowing_fan, "temperature_held" : is_held,  "message" : message['message']})
+    except ValueError as valErr:
+        return jsonify({"errorMessage" : str(valErr)})
 
 @app.route('/toggleHeat', methods=['POST'])
 def toggle_heat():
-    settings = reader.read_json('settings.json')
-    settings['heat'] = not settings['heat']
-    writer.write_json(settings, 'settings.json')
+    is_heat_on = sql_settings.get_is_heat_on()
+    sql_settings.set_is_heat_on(not is_heat_on)
 
     return jsonify({'response': 'success'})
 
 @app.route('/toggleFan', methods=['POST'])
 def toggle_fan():
-    settings = reader.read_json('settings.json')
-    settings['fan'] = not settings['fan']
-    writer.write_json(settings, 'settings.json')
+    is_fan_on = sql_settings.get_is_fan_on()
+    sql_settings.set_is_fan_on(not is_fan_on)
 
     return jsonify({'response': 'success'})
 
 @app.route('/schedule_data', methods=['GET'])
 def get_schedule_data():
-    return jsonify(reader.read_json('settings.json'))
+    schedule_data = schedule.get_schedule()
+    sched_list = []
+    for s in schedule_data:
+        element = {}
+        element['id'] = s[0]
+        element['dayOfWeek'] = s[1]
+        element['hour'] = s[2]
+        element['minute'] = s[3]
+        element['temperature'] = s[4]
+        sched_list.append(element)
+
+    return json.dumps(sched_list)
+
 
 @app.route('/setSchedule', methods=['POST'])
 def set_schedule():
     if not request.json:
         return jsonify({'response': 'error'})
     
-    settings = reader.read_json('settings.json')
-    settings['schedules'] = request.json
-    writer.write_json(settings, 'settings.json')
-        
+    schedule.set_schedule_by_json(request.json)
     return jsonify({'response': 'success'})
-
-@app.route('/getMessage', methods=['GET'])
-def get_message():
-    message = reader.read_json('message.json')
-    return jsonify({"message": message["message"]})
 
 if __name__ == '__main__':
     config = reader.read_json('config.json')
