@@ -133,11 +133,19 @@ $(function() {
     $('body').on('click', '.schedule-page-btn', function(){
 	$('.temperature-control').addClass('hidden');
 	$('.schedule-control').removeClass('hidden');
+	$('.history').addClass('hidden');
     });
 
     $('body').on('click', '.thermostat-page-btn', function(){
 	$('.temperature-control').removeClass('hidden');
 	$('.schedule-control').addClass('hidden');
+	$('.history').addClass('hidden');
+    });
+
+    $('body').on('click', '.history-page-btn', function(){
+	$('.temperature-control').addClass('hidden');
+	$('.schedule-control').addClass('hidden');
+	$('.history').removeClass('hidden');
     });
 
     $('body').on('click', '[data-settings]', function(){
@@ -298,7 +306,10 @@ $(function() {
 		$('.forecast-temp-condition-value .condition').addClass(className);
 		$('[data-condition-text]').html(response.query.results.channel.item.condition.text);
                 setTimeout(_getWeather, parseInt(response.query.results.channel.ttl) * 1000);
-            }
+            },
+	    error: function(response) {
+		_getWeather();
+	    }
         });
     }
 
@@ -306,14 +317,14 @@ $(function() {
     
     function _rainbow(){
 
-	inner_hue++;
+	inner_hue+=3;
 
 	if(inner_hue > 360){
 	    inner_hue = 0;
 	}
 	$("#touch-box").css({'background-color': 'hsl(' + inner_hue + ', 100%, 50%)'});
 	
-	setTimeout(_rainbow, 100);
+	setTimeout(_rainbow, 500);
     }
 
     _rainbow();

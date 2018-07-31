@@ -11,7 +11,7 @@ class Thermostat:
 
     def run(self, f, r):
         l = Log()
-        flex_temperature = 0.375
+        flex_temperature = 0.3825
         flex_low = 0.4
         last_scheduled_index = -1
         schedule_change_occurred = False
@@ -68,4 +68,7 @@ class Thermostat:
 
             l.log("")
             l.logHistory(target_temperature, current_temperature, f.is_heat_on)
-            time.sleep(5)
+            #if datetime.datetime.now().month > 1 or datetime.datetime.now().day > 25:
+            time.sleep(15)
+            #else:
+            #    time.sleep(5)

@@ -39,13 +39,6 @@ class Reader:
                 except IOError as ex:
                     log.log(str(ex))
                 
-            j = 0
-            
-            while j < polls:
-                temperature_sum += temperature_list[j]
-                j += 1
-            avg_temperature = temperature_sum/polls
-            
             k = 0
             
             accepted_temperature_count = 0;

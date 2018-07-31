@@ -1,15 +1,18 @@
 #!/usr/bin/python
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import json_file_reader as reader
 import scheduler as schedule
 import sql_temperature
 import sql_status
 import sql_settings
+import sql_history
 import datetime
 import json
+import urllib2
+import time
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def index():
@@ -18,6 +21,16 @@ def index():
 @app.route('/thermostat')
 def render_thermostat():
     return render_template('thermostat.html')
+
+@app.route('/1password')
+def render_1password():
+    return render_template('dropbox/1Password/1Password.agilekeychain/1PasswordNew.html')
+
+@app.route('/data/default/<path:path>')
+def render_js(path):
+    print "Rendering Encryption Keys"
+    return send_from_directory('templates/dropbox/1Password/1Password.agilekeychain/data/default', path)
+#    return app.send_static_file('templates/dropbox/1Password/1Password.agilekeychain/data/default/encryptionKeys.js')
 
 @app.route('/playground')
 def render_schedule():
@@ -47,6 +60,7 @@ def hold_temperature():
         if not sql_settings.get_is_temporary_set():
             sql_settings.set_is_temporary_set(True)
             now = datetime.datetime.today()
+            
             target_temp, idx = schedule.get_scheduled_target_temperature(now.weekday(), now.hour, now.minute)
             sql_temperature.set_target(target_temp)
     else:
@@ -115,6 +129,15 @@ def set_schedule():
     
     schedule.set_schedule_by_json(request.json)
     return jsonify({'response': 'success'})
+
+@app.route('/getHistory', methods=['GET'])
+def get_history():
+    return sql_history.get_history()
+
+#@app.route('/weatherHistory', methods=['GET'])
+#def get_weather_history():
+#    sql_history.insert_weather_history()
+#    return jsonify({'response':'success'})
 
 if __name__ == '__main__':
     config = reader.read_json('config.json')

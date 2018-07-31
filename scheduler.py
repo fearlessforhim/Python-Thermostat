@@ -6,7 +6,8 @@ import sqlite3
 def get_scheduled_target_temperature(day_of_week, hour, minute):
     db = sqlite3.connect('thermostat.db')
     cursor = db.cursor()
-    query = '''SELECT hour, minute, temperature, id FROM Schedule WHERE day_of_week = ''' + str(day_of_week) + ''' AND hour <= ''' + str(hour) + ''' AND minute <= ''' + str(minute) + ''' ORDER BY hour DESC, minute DESC'''
+    query = '''SELECT hour, minute, temperature, id FROM Schedule WHERE day_of_week = ''' + str(day_of_week) + ''' AND ((hour < ''' + str(hour) + ''') OR (hour = ''' + str(hour) + ''' AND minute <= ''' + str(minute) + ''')) ORDER BY hour DESC, minute DESC'''
+
     cursor.execute(query)
     value = cursor.fetchone()
     db.close()
