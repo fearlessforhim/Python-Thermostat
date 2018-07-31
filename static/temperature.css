@@ -375,7 +375,9 @@ body.dark-theme .data-control .temperature-display .forecast-display .forecast-t
     color: white;
 }
 
-
+body.dark-theme .data-control .temperature-display .forecast-display .forecast-temp .forecast-temp-condition-value {
+    color: white;
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 650px) {
 
