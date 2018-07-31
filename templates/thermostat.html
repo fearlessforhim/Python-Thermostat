@@ -1,10 +1,14 @@
 <html>
 <head>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='temperature.js') }}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='moment.js') }}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='schedule.js') }}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='history.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='temperature.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='structure.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='history.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='font-awesome.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='schedule.css') }}"/>
 	<meta name="viewport" content="user-scalable=0">
@@ -12,14 +16,19 @@
 <body>
   <div class="page-controls">
     <div class="r">
-      <div class="c6">
+      <div class="c4">
 	<div class="header-btn thermostat-page-btn">
 	  <div>Thermostat</div>
 	</div>
       </div>
-      <div class="c5">
+      <div class="c4">
 	<div class="header-btn schedule-page-btn">
 	  <div>Schedule</div>
+	</div>
+      </div>
+      <div class="c3">
+	<div class="header-btn history-page-btn">
+	  <div>History</div>
 	</div>
       </div>
       <div class="c1">
@@ -188,6 +197,10 @@
 	  </div>
 	</div>
       </div>
+    </div>
+
+    <div class="history hidden">
+      <canvas id="historyChart" width="400" height="400"></canvas>
     </div>
   </div>
 

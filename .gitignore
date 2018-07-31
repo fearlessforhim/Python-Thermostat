@@ -6,3 +6,9 @@ status.json
 history/*
 logs/*
 #*#
+templates/dropbox/*
+*.1password
+thermostat.log
+thermostatApp.log
+thermostatRunner.log
+temperatureLogs
